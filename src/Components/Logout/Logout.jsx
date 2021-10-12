@@ -1,14 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { logout } from "../../features/userSlice";
 import "./Logout.css"
 
 const Logout = () => {
-    const dispatch = useDispatch();
+   
 
     const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(logout());
+        localStorage.clear();
+        window.location.href = "/";
     };
 
     return(
@@ -22,4 +20,4 @@ const Logout = () => {
     )
 }
 
-export default Logout
+export default Logout;

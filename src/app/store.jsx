@@ -5,5 +5,10 @@ import userReducer from "../features/userSlice";
 export const store = configureStore ({
     reducer:{
         user: userReducer, 
-    }
+    },
+    // middleware: (getDefaultMiddleware() => {
+    //     return getDefaultMiddleware().concat()
+    // }
+    
+    // )
 })
