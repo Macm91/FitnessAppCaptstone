@@ -32,6 +32,7 @@ class Register extends Component {
     console.log(newUser);
     console.log(this.state);
     this.registerUser(this.state);
+    alert ("User Created. Go to Login");
   };
 
   registerUser = (newUser) => {
