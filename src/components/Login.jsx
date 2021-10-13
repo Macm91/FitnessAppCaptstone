@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { login } from "../features/userSlice";
-import { useDispatch } from "react-redux";
 import "./Login.css";
 import axios from 'axios';
 
@@ -8,17 +6,8 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const dispatch = useDispatch();
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        dispatch(login({
-            username: username,
-            password: password,
-            loggedIn: true,
-        }));
-
         loginUser(username, password);
 
     };
