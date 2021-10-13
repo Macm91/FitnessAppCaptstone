@@ -5,8 +5,8 @@ import Register from "./Components/Register";
 import jwtDecode from 'jwt-decode';
 import Exercises from "./Components/Exercises/Exercises";
 import axios from "axios";
-import { Redirect } from 'react-router';
-import { Switch, Route, BrowserRouter} from 'react-router-dom';
+// import { Redirect } from 'react-router';
+// import { Switch, Route, BrowserRouter} from 'react-router-dom';
 import WorkoutFolder from "./Components/WorkoutFolder/WorkoutFolder";
 // import NavBar from "./Components/NavBar/NavBar";
 
@@ -41,6 +41,9 @@ class App extends Component{
     
 }
 
+
+
+
 async getExercises(){
   let response = await axios.get(`http://127.0.0.1:8000/api/wf/exercises/`)
   // .then(response => {this.setState({exercises : response.data})})
@@ -52,19 +55,36 @@ async getExercises(){
   console.log ("exercise state", this.state.exercises);
 }
 
+
+
+
+
 async getUserFolders(){
+  const jwt = localStorage.getItem('token');
+  console.log("jwt", jwt);
+  const bearerToken = 'Bearer ' + jwt;
+  console.log(bearerToken);
   try{
-  let response = await axios.get(`http://127.0.0.1:8000/api/wf/folders/`, {headers : {"Authorization" : `Bearer ${this.state.token}`}});
-  // .then(response => {this.setState({exercises : response.data})})
+  let response = await axios.get(`http://127.0.0.1:8000/api/wf/folders/`, { headers : {Authorization : bearerToken}});
   console.log("WF response",response);
   this.setState({
     wFolders : response.data
   });
  
-  console.log ("wFolders State", this.state.exercises);
+  console.log ("wFolders State", this.state.wFolders);
 }
 catch{
-  console.log ("jwt token not loaded for WF")
+  const refreshToken = localStorage.getItem('refresh');
+  let refreshObject = {
+    refresh: refreshToken
+  }
+  let refreshResponse = await axios.post(`http://127.0.0.1:8000/api/auth/login/refresh`, refreshObject)
+  localStorage.setItem('token', refreshResponse.data.access);
+  let response = await axios.get(`http://127.0.0.1:8000/api/wf/folders/`, { headers : {Authorization : refreshResponse.data.access}});
+  console.log("WF response",response);
+  this.setState({
+    wFolders : response.data
+  });
 }}
 
 render(){
