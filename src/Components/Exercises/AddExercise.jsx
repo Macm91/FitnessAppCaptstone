@@ -15,13 +15,16 @@ class AddExerciseForm extends Component{
         this.setState ({
             [event.target.name]: event.target.value,
         });
+        console.log("form add", this.state)
    }
 
    handleSubmit = (event) => {
-       this.props.createExercise(this.state);
+       event.preventDefault();
+       console.log("addex state", this.state)
+       this.createExercise(this.state);
    }
 
-   createExercise=(newEx)=>{axios.post('http://127.0.0.1:8000/api/wf/exercise/', newEx)}
+   createExercise=(newEx)=>{axios.post("http://127.0.0.1:8000/api/wf/addexercise/", newEx)}
 
    render() { 
        return ( 
@@ -44,3 +47,6 @@ class AddExerciseForm extends Component{
 }
 
 export default AddExerciseForm;
+
+
+// there is an issue with prevent default. Losing data before it can be sent. 
