@@ -1,42 +1,45 @@
 import React, { useState ,useEffect } from "react";
+import AddWorkoutFolder from "./AddWorkoutFolder";
+import { Link } from "react-router-dom";
 
 
-const Exercises = (props) => {
+const WorkoutFolder = (props) => {
     const [folders, setFolders] = useState([])
     console.log(folders);
     
     useEffect(()=> {
-        props.getUserFolders();
         setFolders(props.folders);
     }, [props])
 
-    console.log(folders);
+    console.log("folders from components",folders);
 
         return(
         <div className="WF_list">
         
-                {/* {exercises.map((val, index)=> {
+                {folders.map((val, index)=> {
                     return(
-                        <ul>
-                        <button>
+                        <div>
+                        
+                        <button className="folderButton">
                         <div key={index}>
-                            <h3> {val.name}</h3>
-                            <p> {val.body_part}</p>
-                            <p> {val.equipment}</p>
+                            <h3> {val.folder_name}</h3>
+                            <p>{val.folder_description}</p>
                         </div>
                         </button>
-                        </ul>
                         
+                        </div>
                     )
-                })} */}
-           
-        
+                })}
+            <AddWorkoutFolder/>
+            <button>
+                <Link to='/exercises'>Exercises</Link>
+            </button>
         </div>
     );
 //     }
 // }
 }
 
-export default Exercises
+export default WorkoutFolder
 
 

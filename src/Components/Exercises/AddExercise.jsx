@@ -20,7 +20,7 @@ class AddExerciseForm extends Component{
 
    handleSubmit = (event) => {
        event.preventDefault();
-       console.log("addex state", this.state)
+       console.log("addfolder state", this.state)
        this.createExercise(this.state);
    }
 

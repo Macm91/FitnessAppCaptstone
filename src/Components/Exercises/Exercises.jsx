@@ -7,7 +7,7 @@ import AddExerciseForm from "./AddExercise";
 const Exercises = (props) => {
     console.log("exercise props", props.exercises);
     const [exercises, setExercises] = useState([]);
-    const [ex, setEx] = useState();
+    // const [ex, setEx] = useState();
 
     // const [searchTerm, setSearchTerm] = useState('');
     console.log ("exercises in Exercises Comp", exercises);

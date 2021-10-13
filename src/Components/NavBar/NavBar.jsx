@@ -1,29 +1,45 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+
+
+
+
 
 
 const NavBar = ({user}) => {
-  const [currentUser,setCurrentUser] = useState({})
-
   
-
   return ( 
-    <nav className="navigationWrapper">
-     
-    <ul class="navigation">
-            <React.Fragment>
-                <Link to = '/register'>
-                <li class="parent" >Register As Client</li>
-                </Link>  
+    <div className="navigationWrapper">
+      {user && <h4> Welcome {user.username}</h4>}
+      <ul class="navigation">
+        <li>
+          <Link to='/'> Home </Link>  
+        </li>     
+        
 
-                <Link to = '/Login'>
-                <li class="parent">Login</li>
-                </Link>
-            </React.Fragment>  
-        </ul>
-    </nav>
+        {!user &&
+          <React.Fragment>
+              <li>
+                <Link to='/register'>Register</Link>
+              </li>
+              <li>
+                <Link to='/login'>Login</Link>
+              </li>
+          </React.Fragment>
+        }
+        {user &&
+          <React.Fragment>
+            <li>
+              <Link to='/workoutFolder'>Workout Folders</Link>
+            </li>
+            <li>
+              <Link to='/logout'>Logout</Link>
+            </li>
+          </React.Fragment>
+        }
+
+      </ul>
+    </div>
    );
 }
 

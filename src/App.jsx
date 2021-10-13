@@ -5,10 +5,11 @@ import Register from "./Components/Register";
 import jwtDecode from 'jwt-decode';
 import Exercises from "./Components/Exercises/Exercises";
 import axios from "axios";
-// import { Redirect } from 'react-router';
-// import { Switch, Route, BrowserRouter} from 'react-router-dom';
+import { Redirect } from 'react-router';
+import { Switch, Route} from 'react-router-dom';
 import WorkoutFolder from "./Components/WorkoutFolder/WorkoutFolder";
-// import NavBar from "./Components/NavBar/NavBar";
+import NavBar from "./Components/NavBar/NavBar";
+import Home from "./Components/Home/Home";
 
 
 
@@ -37,7 +38,8 @@ class App extends Component{
       console.log("use != jwtdecpde")
     };
     this.getExercises();
-    console.log("state",this.exercises);
+    this.getUserFolders();
+    // console.log("state",this.exercises);
     
 }
 
@@ -46,13 +48,11 @@ class App extends Component{
 
 async getExercises(){
   let response = await axios.get(`http://127.0.0.1:8000/api/wf/exercises/`)
-  // .then(response => {this.setState({exercises : response.data})})
-  console.log("response",response)
-
+  // console.log("response",response)
   this.setState({
     exercises:response.data
   });
-  console.log ("exercise state", this.state.exercises);
+  // console.log ("exercise state", this.state.exercises);
 }
 
 
@@ -66,7 +66,7 @@ async getUserFolders(){
   console.log(bearerToken);
   try{
   let response = await axios.get(`http://127.0.0.1:8000/api/wf/folders/`, { headers : {Authorization : bearerToken}});
-  console.log("WF response",response);
+  console.log("WF response1",response);
   this.setState({
     wFolders : response.data
   });
@@ -81,37 +81,51 @@ catch{
   let refreshResponse = await axios.post(`http://127.0.0.1:8000/api/auth/login/refresh`, refreshObject)
   localStorage.setItem('token', refreshResponse.data.access);
   let response = await axios.get(`http://127.0.0.1:8000/api/wf/folders/`, { headers : {Authorization : refreshResponse.data.access}});
-  console.log("WF response",response);
+  console.log("WF response2",response);
   this.setState({
     wFolders : response.data
   });
+  console.log ("wFolders State2", this.state.wFolders);
 }}
 
 render(){
-  // const user = this.state.user;
+  const user = this.state.user;
 return(
   <div>
-    {/* <NavBar className="navbar" user = {user}/>    */}
-    <WorkoutFolder getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>
-    <Exercises exercises = {this.state.exercises}/>
-    <Register/>
-    <Login/>
-    <Logout/>
+    <NavBar className="navbar" user = {user}/>   
+    {/* <WorkoutFolder getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/> */}
+    {/* <Exercises exercises = {this.state.exercises}/> */}
+    {/* <Register/>
+    <Login/> */}
+    {/* <Logout/> */}
 
 
 
-{/* <BrowserRouter>
-    <Switch>
-                <Route path="/register" component={Register}/>
-                <Route path="/exercises" render = {props => <Exercises {...props} exercises = {this.state.exercises}/>}/>
-                <Route path="/login" component = {Login}/>
-                <Route path="/logout" component = {Logout}/>
-                
-                
-    </Switch>
-</BrowserRouter> */}
-
+  <div>
+      <Switch>
+          <Route path = '/profile' render={props => {
+            if (!user){
+              return <Redirect to="/login"/>;
+            } else {
+              return <Home {...props} user = {user}/>
+            }
+          }}
+          />
+                  <Route path="/register" component={Register}/>
+                  <Route path="/exercises" 
+                    render = {(props) => (
+                    <Exercises {...props} exercises = {this.state.exercises}/>)}/>
+                  <Route path="/login" component = {Login}/>
+                  <Route path="/logout" component = {Logout}/>
+                  <Route path="/workoutFolder" 
+                    render = {(props) => (
+                    <WorkoutFolder {...props} getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
+                  
+                  
+      </Switch>
   </div>
+
+  </div> 
 
 );
 }
