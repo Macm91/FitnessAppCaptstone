@@ -10,6 +10,8 @@ import { Switch, Route} from 'react-router-dom';
 import WorkoutFolder from "./Components/WorkoutFolder/WorkoutFolder";
 import NavBar from "./Components/NavBar/NavBar";
 import Home from "./Components/Home/Home";
+import Workouts from "./Components/Workouts/Workouts";
+import AddWorkoutFolder from "./Components/WorkoutFolder/AddWorkoutFolder";
 
 
 
@@ -88,18 +90,24 @@ catch{
   console.log ("wFolders State2", this.state.wFolders);
 }}
 
+
+
+
+
+
+
+
+
+
+
+
+
 render(){
   const user = this.state.user;
 return(
   <div>
     <NavBar className="navbar" user = {user}/>   
-    {/* <WorkoutFolder getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/> */}
-    {/* <Exercises exercises = {this.state.exercises}/> */}
-    {/* <Register/>
-    <Login/> */}
-    {/* <Logout/> */}
-
-
+    
 
   <div>
       <Switch>
@@ -120,11 +128,12 @@ return(
                   <Route path="/workoutFolder" 
                     render = {(props) => (
                     <WorkoutFolder {...props} getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
-                  
+                  <Route path="/AddWorkoutFolder" component = {AddWorkoutFolder}/>
+                  <Route path="/workouts" component = {Workouts}/>
                   
       </Switch>
   </div>
-
+ 
   </div> 
 
 );

@@ -15,7 +15,7 @@ const Login = () => {
     async function loginUser(login,pass){
         let payload = {username: login, password:pass}
         let response = await axios.post(`http://127.0.0.1:8000/api/auth/login/`, payload)
-        console.log(response.data)
+        console.log("Login Result: ", response.data)
         localStorage.setItem('token', response.data.access);
         localStorage.setItem('refresh', response.data.refresh)
         window.location = '/home';

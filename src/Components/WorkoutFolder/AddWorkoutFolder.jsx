@@ -34,7 +34,9 @@ class AddWorkoutFolder extends Component{
         console.log("WFA response1",response);
 
       }
-      catch{
+      catch(err) {
+        console.log("Post error: ", err)
+
         const refreshToken = localStorage.getItem('refresh');
         let refreshObject = {
           refresh: refreshToken
@@ -48,7 +50,7 @@ class AddWorkoutFolder extends Component{
       }}
       
 
-      createExercise=(newEx)=>{axios.post("http://127.0.0.1:8000/api/wf/addexercise/", newEx)}
+      // createExercise=(newEx)=>{axios.post("http://127.0.0.1:8000/api/wf/addexercise/", newEx)}
 
 
     handleChange= (event) => {
