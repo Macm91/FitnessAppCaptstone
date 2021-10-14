@@ -12,6 +12,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import Home from "./Components/Home/Home";
 import Workouts from "./Components/Workouts/Workouts";
 import AddWorkoutFolder from "./Components/WorkoutFolder/AddWorkoutFolder";
+import AddWorkout from "./Components/Workouts/AddWorkout";
 
 
 
@@ -22,6 +23,7 @@ class App extends Component{
     exercises: [],
     wFolders:[],
     workouts: [],
+    folderID: 0,
   }
   
 
@@ -96,10 +98,18 @@ catch{
 
 
 
-async getFolderWorkouts (folder){
+ getFolderWorkouts = async (folder)=>{
   let response = await axios.get(`http://127.0.0.1:8000/api/wf/workout/folder/${folder}/`);
   console.log("workouts", response.data);
-  return (response.data);
+  this.setState({
+    workouts : response.data
+  });
+  this.setState({
+    folderID : folder
+  });
+  console.log("folder id in state app",this.state.folderID);
+ 
+
 }
 
 
@@ -139,6 +149,9 @@ return(
                   <Route path="/workouts" 
                     render ={(props) => (
                       <Workouts {...props} workouts = {this.state.workouts}/>)}/>
+                  <Route path ='/addWorkout'
+                   render ={(props) => (
+                    <AddWorkout {...props} folderID = {this.state.folderID}/>)}/>
 
                   
       </Switch>

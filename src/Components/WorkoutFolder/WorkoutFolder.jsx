@@ -1,7 +1,6 @@
 import React, { useState ,useEffect } from "react";
 import AddWorkoutFolder from "./AddWorkoutFolder";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { Redirect } from "react-router";
 
 
@@ -9,6 +8,7 @@ import { Redirect } from "react-router";
 const WorkoutFolder = (props) => {
     const [folders, setFolders] = useState([])
     const [workouts, setWorkouts] = useState([])
+    const [clicked, setClicked] = useState(false)
     console.log(folders);
     
     useEffect(()=> {
@@ -20,19 +20,22 @@ const WorkoutFolder = (props) => {
 
     const handleClick= (val) =>{
         let response = props.getFolderWorkouts(val);
-        console.log("handleclick response: ",response)
-        setWorkouts(response);
-        console.log("workouts from handle clicke",workouts);
-        return(
-            <Redirect to="/workouts"/>
-        )
+        // console.log("handleclick response: ",response)
+        // setWorkouts(response);
+        // console.log("workouts from handle clicke",workouts);
+        setClicked(true)
 
 
 
   }
 
 
-        return(
+    if (clicked){
+        return(<Redirect to = {{
+            pathname:"/workouts",
+            props: {workouts: workouts} }}/>);
+    }
+    return(
         <div className="WF_list">
         
                 {folders.map((val, index)=> {
@@ -63,8 +66,6 @@ const WorkoutFolder = (props) => {
             </button>
         </div>
     );
-//     }
-// }
 }
 
 export default WorkoutFolder
