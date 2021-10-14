@@ -10,6 +10,7 @@ const Workouts = (props) => {
     const [edit, setEdit] = useState(false)
     const [singleWorkout, setSingleWorkout] = useState([])
     console.log("component workout", workouts)
+    const [seeWorkoutExercises, setSeeWorkoutExercises] = useState(false)
 
     useEffect(()=>{
         setWorkouts(props.workouts)
@@ -21,19 +22,30 @@ const Workouts = (props) => {
     // handleEditClick needs to open component to edit workout && set edit to true
 
     const handleEditClick = (val) =>{
-        console.log("Testing", val)
-        setSingleWorkout(val);
-        console.log("Workout comp single Workout", singleWorkout);
         props.workoutSetID(val)
         setEdit(true)
     }
 
 
+    const handleClick = (val) => {
+        props.workoutSetID(val);
+        props.getWorkoutExercises(val);
+        setSeeWorkoutExercises(true);
 
+    }
 
+    
+    
+    
+    
+    
     if (edit){
         return(<Redirect to = "/editWorkout"/>);
     }
+
+    if (seeWorkoutExercises)
+        return(<Redirect to = "/workoutExerciseDisplay"/>)
+
             return(
             <div className="WF_list">
             <h1>Workouts</h1>
@@ -43,9 +55,10 @@ const Workouts = (props) => {
                         return(
                             <div>
                                 
-                                {/* <button className="exerciseOfWorkout" onClick={event => {handleClick(val.id)}}> */}
+                                
                             <div key={index}>
-                            <button>
+                            <button className="exerciseOfWorkout" onClick={event => {handleClick(val.id)}}>
+                                {/* this button on click will route to the exercise display  */}
                                 <h3> {val.name}</h3>
                                 <p>{val.notes}</p>
                                 <button className="editWorkout" onClick={event => {handleEditClick(val.id)}}>Edit</button>

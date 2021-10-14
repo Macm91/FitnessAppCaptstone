@@ -14,6 +14,7 @@ import Workouts from "./Components/Workouts/Workouts";
 import AddWorkoutFolder from "./Components/WorkoutFolder/AddWorkoutFolder";
 import AddWorkout from "./Components/Workouts/AddWorkout";
 import EditWorkout from "./Components/Workouts/EditWorkout";
+import WorkoutExerciseDisplay from "./Components/WorkoutExercises/WorkoutExerciseDisplay";
 
 
 
@@ -26,6 +27,7 @@ class App extends Component{
     workouts: [],
     folderID: 0,
     workoutID: 0,
+    workoutExercises: [],
   }
   
 
@@ -124,9 +126,16 @@ setFolderId = async (id)=>{
 }
 
 
+getWorkoutExercises = async (fk)=>{
+  let response = await axios.get(`http://127.0.0.1:8000/api/wf/workoutexercises/${fk}/`);
+  console.log("workouts", response.data);
+  this.setState({
+    workoutExercises : response.data
+  });
+  
+  console.log("folder id in state app",this.state.workoutExercises);
 
-
-
+}
 
 
 
@@ -159,13 +168,18 @@ return(
                   <Route path="/AddWorkoutFolder" component = {AddWorkoutFolder}/>
                   <Route path="/workouts" 
                     render ={(props) => (
-                      <Workouts {...props} workouts = {this.state.workouts} workoutSetID={this.workoutSetID}/>)}/>
+                      <Workouts {...props} workouts = {this.state.workouts} workoutSetID={this.workoutSetID} 
+                      getWorkoutExercises={this.getWorkoutExercises}/>)}/>
                   <Route path ='/addWorkout'
                    render ={(props) => (
                     <AddWorkout {...props} folderID = {this.state.folderID}/>)}/>
                   <Route path = '/editWorkout' 
                     render ={(props) => (
                     <EditWorkout {...props} folderID = {this.state.folderID} workoutID={this.state.workoutID}/>)}/>
+                  <Route path = '/workoutExerciseDisplay'
+                    render ={(props) => (
+                    <WorkoutExerciseDisplay {...props} workoutExercises={this.state.workoutExercises} workoutID={this.state.workoutID}/>)}/>
+                  
 
                   
       </Switch>
