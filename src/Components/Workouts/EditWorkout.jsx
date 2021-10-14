@@ -42,14 +42,18 @@ const WorkoutFolder = (props) => {
         }
         console.log (body);
         editWorkout(body)
-      
-
   }
 
   const editWorkout = (e) => {
       axios.put(`http://127.0.0.1:8000/api/wf/workout/edit/${e.id}/`, e)
 };
-// function works. Just need to create the form now 
+
+
+    const handleDeleteClick = (e) =>{
+        axios.delete(`http://127.0.0.1:8000/api/wf/workout/edit/${e}/`)
+        alert ("Workout Successfully Deleted")
+    }
+
 
     return(
         <div className="WF_list">
@@ -75,6 +79,10 @@ const WorkoutFolder = (props) => {
 
           <button type ="submit"> Update </button>
           </form>
+
+
+
+          <button onClick={event => {handleDeleteClick(id)}}>Delete</button>
         </div>
        
 

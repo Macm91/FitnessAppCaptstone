@@ -45,9 +45,10 @@ const Workouts = (props) => {
                                 
                                 {/* <button className="exerciseOfWorkout" onClick={event => {handleClick(val.id)}}> */}
                             <div key={index}>
-                            <button className="editWorkout" onClick={event => {handleEditClick(val.id)}}>
+                            <button>
                                 <h3> {val.name}</h3>
                                 <p>{val.notes}</p>
+                                <button className="editWorkout" onClick={event => {handleEditClick(val.id)}}>Edit</button>
                                 </button>     
                             </div>  
                             
