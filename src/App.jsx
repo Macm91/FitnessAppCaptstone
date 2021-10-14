@@ -21,6 +21,7 @@ class App extends Component{
     token: "",
     exercises: [],
     wFolders:[],
+    workouts: [],
   }
   
 
@@ -95,6 +96,12 @@ catch{
 
 
 
+async getFolderWorkouts (folder){
+  let response = await axios.get(`http://127.0.0.1:8000/api/wf/workout/folder/${folder}/`);
+  console.log("workouts", response.data);
+  return (response.data);
+}
+
 
 
 
@@ -127,9 +134,12 @@ return(
                   <Route path="/logout" component = {Logout}/>
                   <Route path="/workoutFolder" 
                     render = {(props) => (
-                    <WorkoutFolder {...props} getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
+                    <WorkoutFolder {...props} getFolderWorkouts = {this.getFolderWorkouts} getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
                   <Route path="/AddWorkoutFolder" component = {AddWorkoutFolder}/>
-                  <Route path="/workouts" component = {Workouts}/>
+                  <Route path="/workouts" 
+                    render ={(props) => (
+                      <Workouts {...props} workouts = {this.state.workouts}/>)}/>
+
                   
       </Switch>
   </div>

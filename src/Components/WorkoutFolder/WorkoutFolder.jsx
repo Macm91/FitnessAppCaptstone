@@ -2,6 +2,8 @@ import React, { useState ,useEffect } from "react";
 import AddWorkoutFolder from "./AddWorkoutFolder";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Redirect } from "react-router";
+
 
 
 const WorkoutFolder = (props) => {
@@ -16,14 +18,18 @@ const WorkoutFolder = (props) => {
     console.log("folders from components",folders);
 
 
-    // http://127.0.0.1:8000/api/wf/workout/folder/1
+    const handleClick= (val) =>{
+        let response = props.getFolderWorkouts(val);
+        console.log("handleclick response: ",response)
+        setWorkouts(response);
+        console.log("workouts from handle clicke",workouts);
+        return(
+            <Redirect to="/workouts"/>
+        )
 
-    // const getFolderWorkouts (folder) {
-    //     let response =  axios.get(`http://127.0.0.1:8000/api/wf/workout/folder/${folder}`);
-    //     console.log("response getFolderWorkouts",response);
-    //     // setWorkouts(response);
-    //     // console.log(workouts);
-    //   }
+
+
+  }
 
 
         return(
@@ -34,17 +40,13 @@ const WorkoutFolder = (props) => {
                     return(
                         <div>
                         
-                        <button className="folderButton" onClick={()=> props.getFolderWorkouts(val.id)}>
+                        {/* <button className="folderButton" onClick={event => {props.getFolderWorkouts(val.id)}}> */}
+                        <button className="folderButton" onClick={event => {handleClick(val.id)}}>
                         <div key={index}>
                             <h3> {val.folder_name}</h3>
                             <p>{val.folder_description}</p> 
                             <p>{val.id}</p>                           
-                            {/* <button  > <Link to={{
-                                pathname:'/Workouts',
-                                aboutProps:{
-                                folder : val
-                                }
-                                }}>Open Folder</Link></button> */}
+                            <Link to='/workouts'></Link>
 
 
 
