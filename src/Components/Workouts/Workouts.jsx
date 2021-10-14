@@ -8,7 +8,6 @@ const Workouts = (props) => {
     const [workouts, setWorkouts] = useState([])
     const [folderID, setFolderID] = useState()
     const [edit, setEdit] = useState(false)
-    const [clicked, setClicked] = useState(false)
     const [singleWorkout, setSingleWorkout] = useState([])
     console.log("component workout", workouts)
 
@@ -17,17 +16,15 @@ const Workouts = (props) => {
         setFolderID(props.folderID)
     },[props])
 
-    // handleclick needs to  && set clicked to true
-
-    const handleClick = (val) =>{
-        setSingleWorkout(val);
-        setEdit(true)
-    }
+  
 
     // handleEditClick needs to open component to edit workout && set edit to true
 
     const handleEditClick = (val) =>{
+        console.log("Testing", val)
         setSingleWorkout(val);
+        console.log("Workout comp single Workout", singleWorkout);
+        props.workoutSetID(val)
         setEdit(true)
     }
 
@@ -35,26 +32,25 @@ const Workouts = (props) => {
 
 
     if (edit){
-        return(<Redirect to = {{
-            pathname:"/editWorkout",
-            props: {workouts: workouts} }}/>);
+        return(<Redirect to = "/editWorkout"/>);
     }
             return(
             <div className="WF_list">
             <h1>Workouts</h1>
             <div>
+                
                     {workouts.map((val, index)=> {
                         return(
                             <div>
-                                <button>
+                                
                                 {/* <button className="exerciseOfWorkout" onClick={event => {handleClick(val.id)}}> */}
                             <div key={index}>
-                                
+                            <button className="editWorkout" onClick={event => {handleEditClick(val.id)}}>
                                 <h3> {val.name}</h3>
                                 <p>{val.notes}</p>
-                            <button className="editWorkout" onClick={event => {handleEditClick(val.id)}}>Edit</button>
+                                </button>     
                             </div>  
-                            </button>     
+                            
 
 
                             

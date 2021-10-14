@@ -13,6 +13,7 @@ import Home from "./Components/Home/Home";
 import Workouts from "./Components/Workouts/Workouts";
 import AddWorkoutFolder from "./Components/WorkoutFolder/AddWorkoutFolder";
 import AddWorkout from "./Components/Workouts/AddWorkout";
+import EditWorkout from "./Components/Workouts/EditWorkout";
 
 
 
@@ -24,6 +25,7 @@ class App extends Component{
     wFolders:[],
     workouts: [],
     folderID: 0,
+    workoutID: 0,
   }
   
 
@@ -96,9 +98,15 @@ catch{
 
 
 
+workoutSetID = (val) => {
+  this.setState({
+    workoutID : val
+  })
+}
 
 
- getFolderWorkouts = async (folder)=>{
+
+getFolderWorkouts = async (folder)=>{
   let response = await axios.get(`http://127.0.0.1:8000/api/wf/workout/folder/${folder}/`);
   console.log("workouts", response.data);
   this.setState({
@@ -110,6 +118,9 @@ catch{
   console.log("folder id in state app",this.state.folderID);
  
 
+}
+setFolderId = async (id)=>{
+  this.setState({})
 }
 
 
@@ -148,10 +159,13 @@ return(
                   <Route path="/AddWorkoutFolder" component = {AddWorkoutFolder}/>
                   <Route path="/workouts" 
                     render ={(props) => (
-                      <Workouts {...props} workouts = {this.state.workouts}/>)}/>
+                      <Workouts {...props} workouts = {this.state.workouts} workoutSetID={this.workoutSetID}/>)}/>
                   <Route path ='/addWorkout'
                    render ={(props) => (
                     <AddWorkout {...props} folderID = {this.state.folderID}/>)}/>
+                  <Route path = '/editWorkout' 
+                    render ={(props) => (
+                    <EditWorkout {...props} folderID = {this.state.folderID} workoutID={this.state.workoutID}/>)}/>
 
                   
       </Switch>

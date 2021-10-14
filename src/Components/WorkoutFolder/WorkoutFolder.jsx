@@ -49,7 +49,7 @@ const WorkoutFolder = (props) => {
                             <h3> {val.folder_name}</h3>
                             <p>{val.folder_description}</p> 
                             <p>{val.id}</p>                           
-                            <Link to='/workouts'></Link>
+                            {/* <Link to='/workouts'></Link> */}
 
 
 
