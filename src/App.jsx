@@ -30,6 +30,7 @@ class App extends Component{
     folderID: 0,
     workoutID: 0,
     workoutExercises: [],
+    chosenExercise: "",
   }
   
 
@@ -105,6 +106,12 @@ catch{
 workoutSetID = (val) => {
   this.setState({
     workoutID : val
+  })
+}
+
+chosenExerciseSetID = (val) => {
+  this.setState({
+    chosenExercise : val
   })
 }
 
@@ -185,7 +192,7 @@ return(
                     workoutExercises={this.state.workoutExercises} workoutID={this.state.workoutID}/>)}/>
                   <Route path="/addWorkoutExercise" 
                   render ={(props) => (
-                    <AddWorkoutExercise {...props} exercises={this.state.exercises} workoutID={this.state.workoutID}/>)}/>
+                    <AddWorkoutExercise {...props} exercise={this.state.exercise} workoutID={this.state.workoutID}/>)}/>
                   <Route path="/fastTimer" component = {FastCountdownTimer}/>
 
                   

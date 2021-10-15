@@ -7,7 +7,6 @@ import axios from "axios";
 
 const WorkoutExerciseDisplay = (props) => {
     const[wExercises, setWExercises] = useState([])
-    const [exerciseName, setExerciseName] = useState([])
     const [allExercises, setAllExercises] = useState([])
     
     useEffect(()=> {
@@ -52,9 +51,13 @@ const WorkoutExerciseDisplay = (props) => {
                     ))} */}
                                 </div>
                             <div>
-                            <h3> {val.notes}: </h3> 
+                            <h3> {val.exercise}: </h3> 
+                            <h4> {val.weight} </h4>
                             <p>{val.sets} x {val.reps}</p>
+                            <p><small> Notes: {val.notes}</small> </p> 
                             </div>
+
+
                             <button onClick={event => {handleClick(val.id)}}>
                                 Delete 
                             </button>
@@ -65,7 +68,7 @@ const WorkoutExerciseDisplay = (props) => {
                     )
                 })}
             
-            <button> <Link to='/AddWorkoutExercise'>Add Exercise </Link></button>
+            <button> <Link to='/exercises'>Add Exercise </Link></button>
         </div>
     );
 }

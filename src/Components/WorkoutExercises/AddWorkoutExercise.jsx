@@ -6,21 +6,22 @@ import axios from "axios";
 
 
 const WorkoutExerciseDisplay = (props) => {
-    const [exercises, setExercises] = useState ([[]])
     const [workout, setWorkout] = useState ([])
     const [sets, setSets] = useState()
     const [reps, setReps] = useState()
     const [notes, setNotes] = useState("")
-    const [exerciseID, setExerciseID] = useState()
+    const [exercise, setExercise] = useState()
+    const [weight, setWeight] = useState ()
 
+ 
     // const [exID, ]
     
     useEffect(()=> {
-        setExercises(props.exercises);
+        setExercise(props.exercise);
         setWorkout(props.workoutID)
     }, [props]);
 
-console.log ("addex exercises", exercises)
+console.log ("addex exercises", exercise)
 console.log ("addex userID", workout)
 
 
@@ -30,8 +31,9 @@ const handleSubmit = (event) => {
     debugger
     event.preventDefault();
     let newExercise = {
-        exercise_id : 1,
-        workout_id : workout, 
+        exercise : exercise.name,
+        workout : workout, 
+        weight : weight,
         sets : sets,
         reps : reps, 
         notes : notes
@@ -59,9 +61,11 @@ const handleChangeNotes =(event)=>{
     setNotes(event.target.value)
 }
 
-const handleChangeExerciseID =(event)=>{
-    setExerciseID(event.target.value)
+const handleChangeWeight =(event)=>{
+    setWeight(event.target.value)
 }
+
+
 
 
     return(
@@ -72,16 +76,12 @@ const handleChangeExerciseID =(event)=>{
 
 
         <div>
-        <label>Exercise Name</label>
+            <label>Sets</label>
                 <input
-                    name="lastname"
-                    onChange={handleChangeNotes}
-                    value={notes}
+                    name="weight"
+                    onChange={handleChangeWeight}
+                    value={weight}
                 />
-            <form
-            className="addExercise"
-            onSubmit={(event) => handleSubmit(event)}
-            >
             <label>Sets</label>
                 <input
                     name="sets"
@@ -95,14 +95,17 @@ const handleChangeExerciseID =(event)=>{
                     value={reps}
                 />
           
-
-            {/* <label>
-                Exercise:
-                <select name="exerciseID" value={exerciseID} onChange = {handleChangeExerciseID}>
-                    <option value={1}> Squat </option>
-
-                </select>
-            </label> */}
+          <label>Notes</label>
+                <input
+                    name="lastname"
+                    onChange={handleChangeNotes}
+                    value={notes}
+                />
+            <form
+            className="addExercise"
+            onSubmit={(event) => handleSubmit(event)}
+            >
+            
             <button type="submit">Create Workout</button>
             </form>
             </div> 
