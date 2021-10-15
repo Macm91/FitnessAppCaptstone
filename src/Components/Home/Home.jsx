@@ -9,7 +9,15 @@ const Home = (props) => {
       <button className="WFBtn">
               <Link to='/workoutFolder'>Workout Folders</Link>
             </button>
+
+      <button className="WFBtn">
+              <Link to='/fastTimer'>Fasting Timer</Link>
+            </button>
+            
     </div>
+
+
+
    );
 }
 

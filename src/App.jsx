@@ -16,6 +16,7 @@ import AddWorkout from "./Components/Workouts/AddWorkout";
 import EditWorkout from "./Components/Workouts/EditWorkout";
 import WorkoutExerciseDisplay from "./Components/WorkoutExercises/WorkoutExerciseDisplay";
 import AddWorkoutExercise from "./Components/WorkoutExercises/AddWorkoutExercise";
+import FastCountdownTimer from "./Components/Fasts/FastCountdownTimer";
 
 
 
@@ -185,6 +186,7 @@ return(
                   <Route path="/addWorkoutExercise" 
                   render ={(props) => (
                     <AddWorkoutExercise {...props} exercises={this.state.exercises} workoutID={this.state.workoutID}/>)}/>
+                  <Route path="/fastTimer" component = {FastCountdownTimer}/>
 
                   
       </Switch>
