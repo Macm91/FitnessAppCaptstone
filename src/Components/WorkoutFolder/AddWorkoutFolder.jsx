@@ -16,38 +16,9 @@ class AddWorkoutFolder extends Component{
     }
 
 
-    async AddUserFolders(){
-        debugger
-        const jwt = localStorage.getItem('token');
-        // console.log("jwt", jwt);
-        const bearerToken = 'Bearer ' + jwt;
-        // console.log("addfolder", bearerToken);
-        let stuff = this.state
-        // let body = {
-        //     "folder_description" : this.state.folder_description,
-        //     "folder_name" : this.state.folder_name
-        // }
-        console.log("body", stuff)
-        try{
-        
-        let response = await axios.post(`http://127.0.0.1:8000/api/wf/folders/`, { headers : {Authorization : bearerToken}}, stuff);
-        console.log("WFA response1",response);
+  addWorkoutFolder(){
 
-      }
-      catch(err) {
-        console.log("Post error: ", err)
-
-        const refreshToken = localStorage.getItem('refresh');
-        let refreshObject = {
-          refresh: refreshToken
-        }
-        let refreshResponse = await axios.post(`http://127.0.0.1:8000/api/auth/login/refresh`, refreshObject)
-        localStorage.setItem('token', refreshResponse.data.access);
-
-
-        let response = await axios.get(`http://127.0.0.1:8000/api/wf/folders/`, { headers : {Authorization : refreshResponse.data.access}}, stuff);
-        console.log("WFA response2",response);
-      }}
+  }
       
 
       // createExercise=(newEx)=>{axios.post("http://127.0.0.1:8000/api/wf/addexercise/", newEx)}
@@ -61,7 +32,7 @@ class AddWorkoutFolder extends Component{
 
    handleSubmit = (event) => {
        event.preventDefault();
-       this.AddUserFolders();
+       this.addWorkoutFolder();
    }
     
     

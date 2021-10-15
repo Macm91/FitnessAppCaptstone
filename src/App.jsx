@@ -15,6 +15,7 @@ import AddWorkoutFolder from "./Components/WorkoutFolder/AddWorkoutFolder";
 import AddWorkout from "./Components/Workouts/AddWorkout";
 import EditWorkout from "./Components/Workouts/EditWorkout";
 import WorkoutExerciseDisplay from "./Components/WorkoutExercises/WorkoutExerciseDisplay";
+import AddWorkoutExercise from "./Components/WorkoutExercises/AddWorkoutExercise";
 
 
 
@@ -156,6 +157,7 @@ return(
             }
           }}
           />
+                  <Route exact path="/" component={Home}/>
                   <Route path="/register" component={Register}/>
                   <Route path="/exercises" 
                     render = {(props) => (
@@ -174,12 +176,15 @@ return(
                    render ={(props) => (
                     <AddWorkout {...props} folderID = {this.state.folderID}/>)}/>
                   <Route path = '/editWorkout' 
-                    render ={(props) => (
+                   render ={(props) => (
                     <EditWorkout {...props} folderID = {this.state.folderID} workoutID={this.state.workoutID}/>)}/>
-                  <Route path = '/workoutExerciseDisplay'
+                  <Route path = '/workoutExerciseDisplay' 
                     render ={(props) => (
-                    <WorkoutExerciseDisplay {...props} workoutExercises={this.state.workoutExercises} workoutID={this.state.workoutID}/>)}/>
-                  
+                    <WorkoutExerciseDisplay {...props} allExercises = {this.state.exercises} 
+                    workoutExercises={this.state.workoutExercises} workoutID={this.state.workoutID}/>)}/>
+                  <Route path="/addWorkoutExercise" 
+                  render ={(props) => (
+                    <AddWorkoutExercise {...props} exercises={this.state.exercises} workoutID={this.state.workoutID}/>)}/>
 
                   
       </Switch>
