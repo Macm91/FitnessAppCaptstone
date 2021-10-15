@@ -7,6 +7,7 @@ import AddExerciseForm from "./AddExercise";
 const Exercises = (props) => {
     console.log("exercise props", props.exercises);
     const [exercises, setExercises] = useState([]);
+    const [moveOn, setMoveOn] = useState(false)
     // const [ex, setEx] = useState();
 
     // const [searchTerm, setSearchTerm] = useState('');
