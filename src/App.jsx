@@ -17,6 +17,7 @@ import EditWorkout from "./Components/Workouts/EditWorkout";
 import WorkoutExerciseDisplay from "./Components/WorkoutExercises/WorkoutExerciseDisplay";
 import AddWorkoutExercise from "./Components/WorkoutExercises/AddWorkoutExercise";
 import FastCountdownTimer from "./Components/Fasts/FastCountdownTimer";
+import WorkoutHistory from "./Components/WorkoutHistory/WorkoutHistory";
 
 
 
@@ -179,46 +180,39 @@ return(
                   <Route exact path="/" component={Home}/>
                   <Route path="/register" component={Register}/>
                   <Route path="/exercises" 
-                    render = {(props) => (
-                    <Exercises {...props} exercises = {this.state.exercises}
-                    chosenExerciseSetID={this.chosenExerciseSetID}/>)}/>
+                        render = {(props) => (
+                        <Exercises {...props} exercises = {this.state.exercises}
+                        chosenExerciseSetID={this.chosenExerciseSetID}/>)}/>
                   <Route path="/login" component = {Login}/>
                   <Route path="/logout" component = {Logout}/>
                   <Route path="/workoutFolder" 
-                    render = {(props) => (
-                    <WorkoutFolder {...props} userIDSet={this.userIDSet} getFolderWorkouts = {this.getFolderWorkouts} getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
-                  
-                  
+                        render = {(props) => (
+                        <WorkoutFolder {...props} userIDSet={this.userIDSet} getFolderWorkouts = {this.getFolderWorkouts} 
+                        getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
                   <Route path="/AddWorkoutFolder" 
-                  render = {(props) => (
-                    <AddWorkoutFolder {...props} user= {this.state.user}/>)}/>
-                  
-                  
-                  
-                  
+                        render = {(props) => (
+                        <AddWorkoutFolder {...props} user= {this.state.user}/>)}/>
                   <Route path="/workouts" 
-                    render ={(props) => (
-                      <Workouts {...props} workouts = {this.state.workouts} workoutSetID={this.workoutSetID} 
-                      getWorkoutExercises={this.getWorkoutExercises}/>)}/>
+                        render ={(props) => (
+                        <Workouts {...props} workouts = {this.state.workouts} workoutSetID={this.workoutSetID} 
+                        getWorkoutExercises={this.getWorkoutExercises}/>)}/>
                   <Route path ='/addWorkout'
-                   render ={(props) => (
-                    <AddWorkout {...props} folderID = {this.state.folderID}/>)}/>
+                        render ={(props) => (
+                        <AddWorkout {...props} folderID = {this.state.folderID}/>)}/>
                   <Route path = '/editWorkout' 
-                   render ={(props) => (
-                    <EditWorkout {...props} folderID = {this.state.folderID} workoutID={this.state.workoutID}/>)}/>
+                        render ={(props) => (
+                        <EditWorkout {...props} folderID = {this.state.folderID} workoutID={this.state.workoutID}/>)}/>
                   <Route path = '/workoutExerciseDisplay' 
-                    render ={(props) => (
-                    <WorkoutExerciseDisplay {...props} allExercises = {this.state.exercises} 
-                    workoutExercises={this.state.workoutExercises} workoutID={this.state.workoutID}/>)}/>
-
-
+                        render ={(props) => (
+                        <WorkoutExerciseDisplay {...props} allExercises = {this.state.exercises} 
+                        workoutExercises={this.state.workoutExercises} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
                   <Route path="/addWorkoutExercise" 
-                  render ={(props) => (
-                    <AddWorkoutExercise {...props} chosenExercise={this.state.chosenExercise} workoutID={this.state.workoutID}/>)}/>
-
-
+                        render ={(props) => (
+                        <AddWorkoutExercise {...props} chosenExercise={this.state.chosenExercise} workoutID={this.state.workoutID}/>)}/>
                   <Route path="/fastTimer" component = {FastCountdownTimer}/>
-
+                  <Route path="/workoutHistory" 
+                        render ={(props) => (
+                        <WorkoutHistory {...props} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
                   
       </Switch>
   </div>

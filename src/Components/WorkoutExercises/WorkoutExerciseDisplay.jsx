@@ -8,10 +8,15 @@ import axios from "axios";
 const WorkoutExerciseDisplay = (props) => {
     const[wExercises, setWExercises] = useState([])
     const [allExercises, setAllExercises] = useState([])
-    
+    const [redirect, setRedirect] = useState(false)
+    const [user, setUser] = useState ()
+    const [workout, setWorkout] = useState ()
+     
     useEffect(()=> {
         setWExercises(props.workoutExercises)
         setAllExercises(props.allExercises)
+        setUser(props.user)
+        setWorkout(props.workoutID)
     }, [props]);
 
     console.log (wExercises);
@@ -22,16 +27,30 @@ const WorkoutExerciseDisplay = (props) => {
         alert ("Exercise Successfully Deleted")
     }
 
+    const handleComplete = () =>{
+        debugger
+        completeWorkout();
+        setRedirect(true)
+    }
 
- 
-    // const getExerciseName = async (fk)=>{
-    //     let response = await axios.get(`http://127.0.0.1:8000/api/wf/exercises/${fk}/`);
-    //     console.log("exercise name", response.data);
-    //     setExerciseName(response);
-    //   }
+   
+
+    const completeWorkout = () =>{
+        debugger
+        let wh = {
+            user : user.user_id, 
+            workout: workout, 
+        }
+        axios.post(`http://127.0.0.1:8000/api/wf/workout/history/`, wh)
+    }
 
 
-    //a function: If val.workout == exercise ID , return Exercise Name 
+    if (redirect){
+        return(
+            <Redirect to = '/workoutHistory'/>
+                );
+            
+        }else{
     return(
         <div className="WF_list">
         <h1>Workout Exercises</h1>
@@ -44,11 +63,6 @@ const WorkoutExerciseDisplay = (props) => {
                        
                         <div key={index}>
                             <div>
-                {/* {allExercises.filter(allExercises => allExercises.includes(val.id )).map(name =>(
-                        <h2>
-                            {name}
-                        </h2>
-                    ))} */}
                                 </div>
                             <div>
                             <h3> {val.exercise}: </h3> 
@@ -69,10 +83,15 @@ const WorkoutExerciseDisplay = (props) => {
                 })}
             
             <button> <Link to='/exercises'>Add Exercise </Link></button>
+
+
+            <button onClick={event => {handleComplete()}}> Complete Workout </button>
         </div>
     );
 }
+}
+
+
+
 
 export default WorkoutExerciseDisplay
-
-
