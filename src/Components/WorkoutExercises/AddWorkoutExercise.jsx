@@ -17,7 +17,7 @@ const WorkoutExerciseDisplay = (props) => {
     // const [exID, ]
     
     useEffect(()=> {
-        setExercise(props.exercise);
+        setExercise(props.chosenExercise);
         setWorkout(props.workoutID)
     }, [props]);
 
@@ -31,7 +31,7 @@ const handleSubmit = (event) => {
     debugger
     event.preventDefault();
     let newExercise = {
-        exercise : exercise.name,
+        exercise : exercise,
         workout : workout, 
         weight : weight,
         sets : sets,
@@ -76,7 +76,7 @@ const handleChangeWeight =(event)=>{
 
 
         <div>
-            <label>Sets</label>
+            <label><large>Weight</large></label>
                 <input
                     name="weight"
                     onChange={handleChangeWeight}

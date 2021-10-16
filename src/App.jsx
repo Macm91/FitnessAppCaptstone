@@ -110,9 +110,12 @@ workoutSetID = (val) => {
 }
 
 chosenExerciseSetID = (val) => {
+  debugger
   this.setState({
     chosenExercise : val
-  })
+  });
+  console.log ("chosen exercise in app", this.chosenExercise);
+  console.log("chosen ex APP WorkoutID", this.workoutID)
 }
 
 
@@ -169,7 +172,8 @@ return(
                   <Route path="/register" component={Register}/>
                   <Route path="/exercises" 
                     render = {(props) => (
-                    <Exercises {...props} exercises = {this.state.exercises}/>)}/>
+                    <Exercises {...props} exercises = {this.state.exercises}
+                    chosenExerciseSetID={this.chosenExerciseSetID}/>)}/>
                   <Route path="/login" component = {Login}/>
                   <Route path="/logout" component = {Logout}/>
                   <Route path="/workoutFolder" 
@@ -190,9 +194,13 @@ return(
                     render ={(props) => (
                     <WorkoutExerciseDisplay {...props} allExercises = {this.state.exercises} 
                     workoutExercises={this.state.workoutExercises} workoutID={this.state.workoutID}/>)}/>
+
+
                   <Route path="/addWorkoutExercise" 
                   render ={(props) => (
-                    <AddWorkoutExercise {...props} exercise={this.state.exercise} workoutID={this.state.workoutID}/>)}/>
+                    <AddWorkoutExercise {...props} chosenExercise={this.state.chosenExercise} workoutID={this.state.workoutID}/>)}/>
+
+
                   <Route path="/fastTimer" component = {FastCountdownTimer}/>
 
                   
