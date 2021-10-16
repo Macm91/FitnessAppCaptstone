@@ -31,6 +31,7 @@ class App extends Component{
     workoutID: 0,
     workoutExercises: [],
     chosenExercise: "",
+    userID: 0,
   }
   
 
@@ -100,6 +101,13 @@ catch{
   console.log ("wFolders State2", this.state.wFolders);
 }}
 
+
+
+userIDSet = (val) => {
+  this.setState({
+    userID : val
+  });
+}
 
 
 
@@ -178,8 +186,16 @@ return(
                   <Route path="/logout" component = {Logout}/>
                   <Route path="/workoutFolder" 
                     render = {(props) => (
-                    <WorkoutFolder {...props} getFolderWorkouts = {this.getFolderWorkouts} getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
-                  <Route path="/AddWorkoutFolder" component = {AddWorkoutFolder}/>
+                    <WorkoutFolder {...props} userIDSet={this.userIDSet} getFolderWorkouts = {this.getFolderWorkouts} getUserFolders = {this.getUserFolders} folders= {this.state.wFolders}/>)}/>
+                  
+                  
+                  <Route path="/AddWorkoutFolder" 
+                  render = {(props) => (
+                    <AddWorkoutFolder {...props} user= {this.state.user}/>)}/>
+                  
+                  
+                  
+                  
                   <Route path="/workouts" 
                     render ={(props) => (
                       <Workouts {...props} workouts = {this.state.workouts} workoutSetID={this.workoutSetID} 

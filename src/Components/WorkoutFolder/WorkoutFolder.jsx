@@ -9,13 +9,14 @@ const WorkoutFolder = (props) => {
     const [folders, setFolders] = useState([])
     const [workouts, setWorkouts] = useState([])
     const [clicked, setClicked] = useState(false)
-    console.log(folders);
+    const [add, setAdd] =useState(false)
+    
     
     useEffect(()=> {
         setFolders(props.folders);
     }, [props])
 
-    console.log("folders from components",folders);
+
 
 
     const handleClick= (val) =>{
@@ -24,10 +25,14 @@ const WorkoutFolder = (props) => {
         // setWorkouts(response);
         // console.log("workouts from handle clicke",workouts);
         setClicked(true)
-
-
-
   }
+
+    const handleLoad = (event) => {
+        // event.preventDefault();
+        console.log("workout folder UserID",event)
+        props.userIDSet(event);
+        setAdd(true)
+    }
 
 
     if (clicked){
@@ -43,25 +48,24 @@ const WorkoutFolder = (props) => {
                     return(
                         <div>
                         
-                        {/* <button className="folderButton" onClick={event => {props.getFolderWorkouts(val.id)}}> */}
                         <button className="folderButton" onClick={event => {handleClick(val.id)}}>
-                        <div key={index}>
+                        <div key={index} on>
                             <h3> {val.folder_name}</h3>
                             <p>{val.folder_description}</p> 
                             <p>{val.id}</p>                           
-                            {/* <Link to='/workouts'></Link> */}
-
-
-
                             
+
+
+
+                            <button onClick={event =>{handleLoad(val.user)}}><Link to='/AddWorkoutFolder'> Add Folder</Link></button>
                         </div>
                         </button>
                         
                         </div>
                     )
                 })}
-            <AddWorkoutFolder/>
-            <button>
+            
+            <button >
                 <Link to='/exercises'>Exercises</Link>
             </button>
         </div>

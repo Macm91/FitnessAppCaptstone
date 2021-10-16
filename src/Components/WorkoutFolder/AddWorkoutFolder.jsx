@@ -1,54 +1,57 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 
-// const AddWorkoutFolder = (props) => {
-//     const [folder_name, setFolder_name] = useState('')
-//     const [folder_description, setFolder_description] = useState ('')
+const AddWorkoutFolder = (props) => {
+    const[folder_description, setFolder_description] = useState('')
+    const [folder_name, setFolder_name] = useState ('')
+    const [user, setUser] = useState()
 
-class AddWorkoutFolder extends Component{
-    constructor (props){
-        super(props);
-        this.state = {
-            folder_description:"",
-            folder_name: "",
-        }
-    }
+            
+    useEffect(()=> {
+        console.log(props.user);
+        setUser(props.user.user_id);
+    }, [props])
 
 
-  addWorkoutFolder(){
-
-  }
-      
-
-      // createExercise=(newEx)=>{axios.post("http://127.0.0.1:8000/api/wf/addexercise/", newEx)}
+  const addWorkoutFolder = (wf) => {
+      axios.post('http://127.0.0.1:8000/api/wf/add/folder/', wf)
+  } 
 
 
-    handleChange= (event) => {
-        this.setState ({
-            [event.target.name]: event.target.value,
-        });
+    const handleChangeName= (event) => {
+        setFolder_name(event.target.value)
    }
 
-   handleSubmit = (event) => {
-       event.preventDefault();
-       this.addWorkoutFolder();
+   const handleChangeDescription= (event) => {
+    setFolder_description(event.target.value)
+}
+
+   const handleSubmit = (e) => {
+       debugger
+       e.preventDefault();
+       let wf= {
+        user : user,
+        folder_description : folder_description, 
+        folder_name : folder_name
+        };
+        console.log("Add Folder: ",wf)
+        addWorkoutFolder(wf);
    }
     
     
-    render(){
+    
         return(
-            <form onSubmit= {this.handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <label>Folder Name</label>
-                    <input name="folder_name" onChange={this.handleChange} value={this.state.folder_name}/>
+                    <input name="folder_name" onChange={handleChangeName} value={folder_name}/>
                 <label>Folder Description</label>
-                    <input name="folder_description" onChange={this.handleChange} value={this.state.folder_description}/>
+                    <input name="folder_description" onChange={handleChangeDescription} value={folder_description}/>
 
                 <button type="submit">Add Folder</button>
 
             </form>
-        )
-    }
+        );
 
       
 }
@@ -57,3 +60,4 @@ class AddWorkoutFolder extends Component{
 export default AddWorkoutFolder
 
 
+// onSubmit= {handleSubmit}

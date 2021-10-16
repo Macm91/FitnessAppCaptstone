@@ -33,6 +33,10 @@ const NavBar = ({user}) => {
               <Link to='/workoutFolder'>Workout Folders</Link>
             </li>
             <li>
+              <Link to='/fastTimer'>Start A Fast</Link>
+            </li>
+            
+            <li>
               <Link to='/logout'>Logout</Link>
             </li>
           </React.Fragment>
