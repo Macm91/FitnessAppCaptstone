@@ -28,7 +28,6 @@ console.log ("addex userID", workout)
 
 
 const handleSubmit = (event) => {
-    debugger
     event.preventDefault();
     let newExercise = {
         exercise : exercise,

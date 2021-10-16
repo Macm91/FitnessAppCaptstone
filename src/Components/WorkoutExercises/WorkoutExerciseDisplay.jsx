@@ -28,7 +28,6 @@ const WorkoutExerciseDisplay = (props) => {
     }
 
     const handleComplete = () =>{
-        debugger
         completeWorkout();
         setRedirect(true)
     }
@@ -36,7 +35,6 @@ const WorkoutExerciseDisplay = (props) => {
    
 
     const completeWorkout = () =>{
-        debugger
         let wh = {
             user : user.user_id, 
             workout: workout, 

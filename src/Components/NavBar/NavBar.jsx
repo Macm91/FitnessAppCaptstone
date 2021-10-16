@@ -35,6 +35,13 @@ const NavBar = ({user}) => {
             <li>
               <Link to='/fastTimer'>Start A Fast</Link>
             </li>
+            <li>
+              <Link to='/viewMeasurements'>Measurements</Link>
+            </li>
+            <li>
+              <Link to='/measurementsTable'>Measurements Table</Link>
+            </li>
+            
             
             <li>
               <Link to='/logout'>Logout</Link>

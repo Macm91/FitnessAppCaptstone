@@ -18,6 +18,9 @@ import WorkoutExerciseDisplay from "./Components/WorkoutExercises/WorkoutExercis
 import AddWorkoutExercise from "./Components/WorkoutExercises/AddWorkoutExercise";
 import FastCountdownTimer from "./Components/Fasts/FastCountdownTimer";
 import WorkoutHistory from "./Components/WorkoutHistory/WorkoutHistory";
+import ViewMeasurements from "./Components/Measurements/ViewMeasurements";
+import AddMeasurements from "./Components/Measurements/AddMeasurements";
+import MeasurementsTable from "./Components/Measurements/MeasurementsTable";
 
 
 
@@ -119,7 +122,6 @@ workoutSetID = (val) => {
 }
 
 chosenExerciseSetID = (val) => {
-  debugger
   this.setState({
     chosenExercise : val
   });
@@ -213,7 +215,15 @@ return(
                   <Route path="/workoutHistory" 
                         render ={(props) => (
                         <WorkoutHistory {...props} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
-                  
+                   <Route path="/viewMeasurements" 
+                        render ={(props) => (
+                        <ViewMeasurements {...props} user={this.state.user.user_id} />)}/>
+                    <Route path="/addMeasurements" 
+                        render ={(props) => (
+                        <AddMeasurements {...props} user={this.state.user.user_id} />)}/>
+                      <Route path="/measurementsTable" 
+                        render ={(props) => (
+                        <MeasurementsTable {...props} user={this.state.user.user_id} />)}/>
       </Switch>
   </div>
  
