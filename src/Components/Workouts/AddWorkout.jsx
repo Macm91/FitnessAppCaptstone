@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState ,useEffect } from "react";
+import "./AddWorkout.css";
 
 
 const Workouts = (props) => {
@@ -40,7 +41,7 @@ const Workouts = (props) => {
     }
 
     return(
-        <div>
+        <div className="Add">
         <form
           className="addWorkout"
           onSubmit={(event) => handleSubmit(event)}
@@ -57,7 +58,7 @@ const Workouts = (props) => {
             onChange={handleChangeNotes}
             value={notes}
           />
-          <button type="submit">Create Workout</button>
+          <button className="submit_btn" type="submit">Create Workout</button>
         </form>
       </div>
         );

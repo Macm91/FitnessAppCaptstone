@@ -67,7 +67,7 @@ const Workouts = (props) => {
 
 
                 
-            <div className="col w-auto h-20 overflow-scroll">
+            <div className="col overflow-auto">
                 
                     {workouts.map((val, index)=> {
                         return(
