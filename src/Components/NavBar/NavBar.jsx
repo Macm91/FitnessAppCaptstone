@@ -4,6 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 // import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 // import Navbar.Toggle from "react-bootstrap/esm/NavbarToggle";
 import { NavDropdown } from "react-bootstrap";
+import "./NavBar.css";
 
 
 
@@ -12,11 +13,11 @@ import { NavDropdown } from "react-bootstrap";
 const NavBar = ({user}) => {
   
   return ( 
-    <Navbar bg="light" expand="lg">
+    <Navbar class="navbar navbar-expand-lg navbar-dark bg-dark" expand="lg " >
     <container>
       {user && <p/>}
       
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Toggle className="toggle"/>
       <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
       <Navbar.Brand> <Link to='/'> Home </Link> </Navbar.Brand>
@@ -36,7 +37,7 @@ const NavBar = ({user}) => {
           <React.Fragment>
 
 
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+          <NavDropdown title="Dropdown" id="basic-nav-dropdown " bg=".bg-secondary">
             <NavDropdown.Item href="#workoutFolder"><Link to='/workoutFolder'>Workout Folders</Link></NavDropdown.Item>
             <NavDropdown.Item href="#fastTimer"><Link to='/fastTimer'>Start A Fast</Link></NavDropdown.Item>
             <NavDropdown.Item href="#viewMeasurements"><Link to='/viewMeasurements'>Measurements</Link></NavDropdown.Item>

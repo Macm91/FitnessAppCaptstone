@@ -1,0 +1,28 @@
+.Btn{
+    height: 12em;
+    width: 12em;
+    margin: 20px;
+    margin-top: 30%;
+    border-radius: 2em;
+    border:none;
+    color: rgb(189, 175, 171);
+    
+}
+
+img{
+    height: 12em;
+    width:12em;
+    border-radius: 2em;
+    border-color: rgb(182, 180, 180);
+    border-style:double;
+    padding: 5px;
+    opacity: .9;
+    background-color: black;
+
+}
+
+
+img:hover{
+    opacity: 1.0;
+}
+

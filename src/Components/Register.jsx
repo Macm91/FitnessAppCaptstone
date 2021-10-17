@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Component } from "react";
+import "./Register.css";
 
 class Register extends Component {
   constructor(props) {
@@ -41,44 +42,49 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
-        <form
-          className="register"
-          onSubmit={(event) => this.handleSubmit(event)}
-        >
-          <label>First Name</label>
-          <input
-            name="firstname"
-            onChange={this.handleChange}
-            value={this.state.firstname}
-          />
+      <div className="register">
+
+
+                
+
+        <form className="register_form" onSubmit={(event) => this.handleSubmit(event)}>
+         
+          <h1>Register </h1>
+          <label for="floatingInput">First Name</label>
+              <input
+                name="firstname"
+                onChange={this.handleChange}
+                value={this.state.firstname}
+              />
           <label>Last Name</label>
-          <input
-            name="lastname"
-            onChange={this.handleChange}
-            value={this.state.lastname}
-          />
+              <input
+                name="lastname"
+                onChange={this.handleChange}
+                value={this.state.lastname}
+              />
           <label>Email</label>
-          <input
-            name="email"
-            type="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
+              <input
+                name="email"
+                type="email"
+                onChange={this.handleChange}
+                value={this.state.email}
+              />
           <label>Username</label>
-          <input
-            name="username"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
+              <input
+                name="username"
+                onChange={this.handleChange}
+                value={this.state.username}
+              />
           <label>Password</label>
-          <input
-            name="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <button type="submit">Register!</button>
+              <input
+                name="password"
+                onChange={this.handleChange}
+                value={this.state.password}
+              />
+          <button className="submit_btn" type="submit">Register!</button>
         </form>
+
+        <button className="redirect_btn">Login</button>
       </div>
     );
   }
