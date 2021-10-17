@@ -20,7 +20,8 @@ import FastCountdownTimer from "./Components/Fasts/FastCountdownTimer";
 import WorkoutHistory from "./Components/WorkoutHistory/WorkoutHistory";
 import ViewMeasurements from "./Components/Measurements/ViewMeasurements";
 import AddMeasurements from "./Components/Measurements/AddMeasurements";
-import MeasurementsTable from "./Components/Measurements/MeasurementsTable";
+// import MeasurementsTable from "./Components/Measurements/MeasurementsTable";
+
 
 
 
@@ -36,6 +37,7 @@ class App extends Component{
     workoutExercises: [],
     chosenExercise: "",
     userID: 0,
+    userMeasurements: []
   }
   
 
@@ -125,8 +127,8 @@ chosenExerciseSetID = (val) => {
   this.setState({
     chosenExercise : val
   });
-  console.log ("chosen exercise in app", this.chosenExercise);
-  console.log("chosen ex APP WorkoutID", this.workoutID)
+  // console.log ("chosen exercise in app", this.chosenExercise);
+  // console.log("chosen ex APP WorkoutID", this.workoutID)
 }
 
 
@@ -146,6 +148,14 @@ getFolderWorkouts = async (folder)=>{
 }
 setFolderId = async (id)=>{
   this.setState({})
+}
+
+
+setUserMeasurements = (e) => {
+  this.setState({
+    userMeasurements : e
+  });
+  console.log ("user measurements after set in app: ", this.state.user_measurements)
 }
 
 
@@ -217,13 +227,14 @@ return(
                         <WorkoutHistory {...props} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
                    <Route path="/viewMeasurements" 
                         render ={(props) => (
-                        <ViewMeasurements {...props} user={this.state.user.user_id} />)}/>
+                        <ViewMeasurements {...props} user={this.state.user.user_id} setUserMeasurements={this.setUserMeasurements} />)}/>
                     <Route path="/addMeasurements" 
                         render ={(props) => (
                         <AddMeasurements {...props} user={this.state.user.user_id} />)}/>
-                      <Route path="/measurementsTable" 
+                      {/* <Route path="/measurementsTable" 
                         render ={(props) => (
-                        <MeasurementsTable {...props} user={this.state.user.user_id} />)}/>
+                        <MeasurementsTable {...props} user={this.state.user.user_id}
+                         userMeasurements= {this.state.userMeasurements}/>)}/> */}
       </Switch>
   </div>
  

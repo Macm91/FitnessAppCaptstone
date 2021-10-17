@@ -21,16 +21,16 @@ const WorkoutFolder = (props) => {
 
     const handleClick= (val) =>{
         let response = props.getFolderWorkouts(val);
-        // console.log("handleclick response: ",response)
-        // setWorkouts(response);
-        // console.log("workouts from handle clicke",workouts);
+        console.log("handleclick response: ",response)
+        setWorkouts(response);
+        console.log("workouts from handle clicke",workouts);
         setClicked(true)
   }
 
-    const handleLoad = (event) => {
-        // event.preventDefault();
-        console.log("workout folder UserID",event)
-        props.userIDSet(event);
+    const handleLoad = (e) => {
+        e.preventDefault();
+        console.log("workout folder UserID",e)
+        props.userIDSet(e);
         setAdd(true)
     }
 
@@ -66,7 +66,7 @@ const WorkoutFolder = (props) => {
                 })}
             
             <button >
-                <Link to='/exercises'>Exercises</Link>
+                <Link to='/AddWorkoutFolder'>Add Folder</Link>
             </button>
         </div>
     );

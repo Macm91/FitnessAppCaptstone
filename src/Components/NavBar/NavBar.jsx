@@ -38,9 +38,7 @@ const NavBar = ({user}) => {
             <li>
               <Link to='/viewMeasurements'>Measurements</Link>
             </li>
-            <li>
-              <Link to='/measurementsTable'>Measurements Table</Link>
-            </li>
+            
             
             
             <li>
