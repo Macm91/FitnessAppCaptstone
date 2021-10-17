@@ -38,7 +38,9 @@ const NavBar = ({user}) => {
             <li>
               <Link to='/viewMeasurements'>Measurements</Link>
             </li>
-            
+            <li>
+              <Link to='/workoutHistory'>Workout History</Link>
+            </li>
             
             
             <li>
