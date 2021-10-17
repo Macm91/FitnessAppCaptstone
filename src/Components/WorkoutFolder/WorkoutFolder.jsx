@@ -27,12 +27,12 @@ const WorkoutFolder = (props) => {
         setClicked(true)
   }
 
-    const handleLoad = (e) => {
-        e.preventDefault();
-        console.log("workout folder UserID",e)
-        props.userIDSet(e);
-        setAdd(true)
-    }
+    // const handleLoad = (e) => {
+    //     e.preventDefault();
+    //     console.log("workout folder UserID",e)
+    //     props.userIDSet(e);
+    //     setAdd(true)
+    // }
 
 
     if (clicked){
@@ -57,7 +57,7 @@ const WorkoutFolder = (props) => {
 
 
 
-                            <button onClick={event =>{handleLoad(val.user)}}><Link to='/AddWorkoutFolder'> Add Folder</Link></button>
+                            {/* <button onClick={event =>{handleLoad(val.user)}}><Link to='/AddWorkoutFolder'> Add Folder</Link></button> */}
                         </div>
                         </button>
                         

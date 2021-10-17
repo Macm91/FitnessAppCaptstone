@@ -21,7 +21,7 @@ import WorkoutHistory from "./Components/WorkoutHistory/WorkoutHistory";
 import ViewMeasurements from "./Components/Measurements/ViewMeasurements";
 import AddMeasurements from "./Components/Measurements/AddMeasurements";
 // import MeasurementsTable from "./Components/Measurements/MeasurementsTable";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
