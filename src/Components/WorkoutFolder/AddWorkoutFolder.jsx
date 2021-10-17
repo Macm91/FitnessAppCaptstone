@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
+import "./AddWorkoutFolder.css";
 
 
 const AddWorkoutFolder = (props) => {
     const[folder_description, setFolder_description] = useState('')
     const [folder_name, setFolder_name] = useState ('')
     const [user, setUser] = useState()
+    const [clicked, setClicked] = useState(false)
 
             
     useEffect(()=> {
@@ -15,7 +18,8 @@ const AddWorkoutFolder = (props) => {
 
 
   const addWorkoutFolder = (wf) => {
-      axios.post('http://127.0.0.1:8000/api/wf/add/folder/', wf)
+      axios.post('http://127.0.0.1:8000/api/wf/add/folder/', wf).then(setClicked(true))
+      
   } 
 
 
@@ -37,18 +41,21 @@ const AddWorkoutFolder = (props) => {
         };
         console.log("Add Folder: ",wf)
         addWorkoutFolder(wf);
+
    }
     
     
-    
+   if (clicked){
+    return(<Redirect to = '/workoutFolder'/>);
+}
         return(
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form className="folder_form" onSubmit={(e) => handleSubmit(e)}>
                 <label>Folder Name</label>
-                    <input name="folder_name" onChange={handleChangeName} value={folder_name}/>
+                    <input className="input" name="folder_name" onChange={handleChangeName} value={folder_name}/>
                 <label>Folder Description</label>
-                    <input name="folder_description" onChange={handleChangeDescription} value={folder_description}/>
+                    <input className="input" name="folder_description" onChange={handleChangeDescription} value={folder_description}/>
 
-                <button type="submit">Add Folder</button>
+                <button className="submit_btn" type="submit">Add Folder</button>
 
             </form>
         );

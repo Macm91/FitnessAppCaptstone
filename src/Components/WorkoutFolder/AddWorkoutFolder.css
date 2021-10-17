@@ -1,0 +1,34 @@
+.folder_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: rgba(255, 0, 0, 0.596);
+}
+
+
+
+
+.input{
+background-color: rgba(245, 245, 245, 0.76);
+height: 3em;
+width: 20em;
+
+}
+
+
+
+.submit_btn {
+    padding: 17px 30px;
+    margin-top: 10px;
+    background: rgba(184, 184, 184, 0.897);
+    border: none;
+    color: rgb(5, 5, 5);
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+label{
+    color:whitesmoke;
+}

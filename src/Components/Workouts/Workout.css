@@ -1,0 +1,55 @@
+.WF_list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
+    color: rgba(255, 0, 0, 0.596);
+    border-radius: 5px;
+}
+
+
+
+.redirect_btn{
+    min-width: 28em;
+    min-height: 4em;
+    border-radius: 3px;
+    margin-top: 1em;
+    background-color: rgb(112, 58, 58);
+}
+
+
+
+
+.exerciseOfWorkout{
+    width: 30em;
+    height:10em;
+    border:none;
+    background-color: rgba(252, 250, 249, 0.87);
+    margin-bottom: 10%;
+    padding:5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addWorkout{
+    border:none;
+    background-color: rgb(8, 8, 8);
+    margin-top: 6%;
+    margin-bottom: 10%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    width: 5em;
+    height: 5em;
+    border-radius: 5px;
+    justify-content: center;
+    
+}
+
+.editWorkout{
+    border:none;
+    background-color: rgba(243, 243, 243, 0.87);
+    margin-top: 5%;
+}

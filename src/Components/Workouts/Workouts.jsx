@@ -1,6 +1,7 @@
 import React, { useState ,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
+import "./Workout.css";
 
 
 const Workouts = (props) => {
@@ -47,9 +48,26 @@ const Workouts = (props) => {
         return(<Redirect to = "/workoutExerciseDisplay"/>)
 
             return(
-            <div className="WF_list">
+            <div className="WF_list" >
+                            
             <h1>Workouts</h1>
-            <div>
+
+
+
+
+
+            <button className="addWorkout">
+                    <Link to='/addWorkout'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                        </svg>
+                    </Link>
+                </button>
+
+
+
+                
+            <div className="col w-auto h-20 overflow-scroll">
                 
                     {workouts.map((val, index)=> {
                         return(
@@ -61,7 +79,10 @@ const Workouts = (props) => {
                                 {/* this button on click will route to the exercise display  */}
                                 <h3> {val.name}</h3>
                                 <p>{val.notes}</p>
-                                <button className="editWorkout" onClick={event => {handleEditClick(val.id)}}>Edit</button>
+                                <button className="editWorkout" onClick={event => {handleEditClick(val.id)}}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                                    </svg></button>
                                 </button>     
                             </div>  
                             
@@ -75,9 +96,7 @@ const Workouts = (props) => {
             
                 
             </div>
-            <button>
-                    <Link to='/addWorkout'>Add Workout</Link>
-                </button>
+
             </div>
         );
     //     }
