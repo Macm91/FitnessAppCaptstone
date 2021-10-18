@@ -35,26 +35,26 @@ const WorkoutHistory = (props) => {
             );
     }else{
     return(
-        <div className="WF_list">
+        <div className="WH_list">
         <h1>Workout History</h1>
                 {workoutHistory.map((val, index)=> {
                     
                     return(
                         <div>
                         
-                        <table>
+                        
                         <div key={index} on>
                             
-                            <tr>
+                           
                             <h3> {val.workout}</h3>
                             <p>{val.date}</p> 
-                            </tr>               
+                            <hr/>    
                             
 
 
 
                         </div>
-                        </table>
+                       
                         
                         </div>
                     )

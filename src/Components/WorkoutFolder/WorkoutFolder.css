@@ -1,6 +1,6 @@
 .folderButton{
     width: 30em;
-   background-color: rgba(252, 250, 249, 0.87);
+   background-color: rgba(255, 255, 255, 0.719);
     color: black;
     /* margin: 1em; */
     /* margin-left: 30%; */
@@ -9,22 +9,28 @@
     padding-top: 6%;
     padding-bottom: 6%;
     border-radius: 8px;
+    border-style: double;
+    border-color: rgb(0, 0, 0);
+    
     
 }
 
 .addBtn{
     color:black;
-    background-color: rgba(252, 250, 249, 0.87);
+    background-color: rgba(255, 255, 255, 0.719);
     border-radius: 6px;
     height: 9em;
     width: 20em;
     margin-left: 36%;
     margin-right: 35%;
     margin-bottom: 5%;
+    margin-top: 5%;
     
 }
 
 
 
-
+.addButton{
+    color:black
+}
 

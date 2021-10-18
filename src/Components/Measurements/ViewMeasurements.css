@@ -3,3 +3,24 @@
     padding: 5%
     
 }
+
+.addMeasurements{
+    
+    background-color: transparent;
+    border: rgb(168, 166, 166);
+    border-style: solid;
+    border-radius: 6px;
+    padding:6px;
+    
+}
+
+.addMesLink{
+    color:rgb(212, 209, 209);
+    text-decoration: none;
+}
+
+.WF_list h1{
+    color:whitesmoke;
+    margin: 15%;
+
+}

@@ -100,14 +100,16 @@ const ViewMeasurements = (props) => {
        <div className="WF_list">
         <h1> Measurements Table</h1>
                
-            <div style= {{height: "500px", width: "500px", color: "whitesmoke"}}>
+            <div style= {{height: "600px", width: "600px", color: "whitesmoke"}}>
                <Line className="chart" data = {chartData} options = {{
                    responsive: true,
                    title: {text: "Measurements", display: true, color:"white.l"},
                }}/>
             </div>
 
-
+            <button className="addMeasurements">
+                        <Link className="addMesLink"  to='/addMeasurements'>Add Measurement</Link>
+                        </button>
 
         </div>
 
@@ -132,9 +134,7 @@ const ViewMeasurements = (props) => {
                 })}
             
             
-            <button >
-                        <Link to='/addMeasurements'>Add Measurement</Link>
-                        </button>
+            
             
         </div>
     );

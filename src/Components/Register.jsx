@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Component } from "react";
 import "./Register.css";
+import { Redirect } from "react-router";
 
 class Register extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Register extends Component {
       email: "",
       first_name: "",
       last_name: "",
+      clicked: false,
     };
   }
 
@@ -36,11 +38,26 @@ class Register extends Component {
     alert ("User Created. Go to Login");
   };
 
+
+
+  handleClick = (event) => {
+    event.preventDefault();
+    this.setState({
+      clicked: true
+    });
+  };
+
   registerUser = (newUser) => {
     axios.post("http://127.0.0.1:8000/api/auth/register/", newUser);
   };
 
   render() {
+
+    if(this.state.clicked){
+      return(
+      <Redirect to="/login"/>
+      );
+    }else{
     return (
       <div className="register">
 
@@ -84,10 +101,10 @@ class Register extends Component {
           <button className="submit_btn" type="submit">Register!</button>
         </form>
 
-        <button className="redirect_btn">Login</button>
+        <button className="redirect_btn" onClick={(event) => this.handleClick(event)}>Login</button>
       </div>
     );
-  }
+  }}
 }
 
 export default Register;

@@ -1,5 +1,6 @@
 .addWE{
     border:none;
+    color: black;
 }
 
 .addtoWE {
@@ -10,4 +11,18 @@
 #notes{
     height:6em;
     background-color: rgb(184, 183, 183);
+}
+
+.lastStep{
+    color: whitesmoke;
+}
+
+.lastStep p {
+    margin-bottom: 15%;
+}
+
+.addWEbtn{
+    color:black;
+    padding: 2%;
+    border-radius: 6px;
 }

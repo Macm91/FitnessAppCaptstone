@@ -12,15 +12,11 @@ export default function ControlButtons(props) {
     <div className="btn-grp">
       <div className="btn btn-two" 
            onClick={props.handleReset}>
-        Reset
+        End Fast
       </div>
       <div className="btn btn-one" 
            onClick={props.handlePauseResume}>
         {props.isPaused ? "Resume" : "Pause"}
-      </div>
-      <div className="btn btn-two" 
-           onClick={props.handleSubmit}>
-        End Fast
       </div>
     </div>
     

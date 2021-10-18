@@ -6,13 +6,14 @@ import "./AddWE.css";
 
 
 
-const WorkoutExerciseDisplay = (props) => {
+const AddWorkoutExercise = (props) => {
     const [workout, setWorkout] = useState ([])
     const [sets, setSets] = useState()
     const [reps, setReps] = useState()
     const [notes, setNotes] = useState("")
     const [exercise, setExercise] = useState()
     const [weight, setWeight] = useState ()
+    const [clicked, setClicked] = useState(false)
 
  
     // const [exID, ]
@@ -44,8 +45,7 @@ const handleSubmit = (event) => {
 
 
 const addWorkoutExercise = (e) => {
-    axios.post('http://127.0.0.1:8000/api/wf/workout/add/exercise/', e)
-    alert("Exercise Added")
+    axios.post('http://127.0.0.1:8000/api/wf/workout/add/exercise/', e).then(()=>setClicked(true))
 };
 
 
@@ -68,6 +68,13 @@ const handleChangeWeight =(event)=>{
 
 
 
+
+if (clicked){
+    return(
+        <Redirect to = "/workoutExerciseDisplay" />
+    );
+}
+else{
     return(
         <div className="WF_list">
         {/* form with handle change and submit  */}
@@ -75,7 +82,7 @@ const handleChangeWeight =(event)=>{
 
 
 
-        <div>
+        <div className="lastStep">
             <h3> Last step:</h3>
             <p>Enter the weight, sets and reps for this exercise</p>
             <form className="addtoWE">
@@ -112,16 +119,14 @@ const handleChangeWeight =(event)=>{
             onSubmit={(event) => handleSubmit(event)}
             >
             
-            <button type="submit">Add To Workout</button>
+            <button className="addWEbtn" type="submit">Add To Workout</button>
             </form>
             </div> 
 
 
         </div>
 
-    );
+    );}
 }
 
-export default WorkoutExerciseDisplay
-
-
+export default AddWorkoutExercise

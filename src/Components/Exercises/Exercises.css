@@ -7,8 +7,12 @@
 
 .exerciseBtn{
     width: 30em;
-    background-color: rgb(192, 191, 191);
-    margin:1%
+    background-color: rgba(255, 255, 255, 0.719);
+    margin:1%;
+    color:black;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: black;
 }
 
 .h3Ex{
@@ -17,8 +21,9 @@
 
 
 .addExercise{
-    border:rgb(162, 170, 162);
-    border-style: solid;
+    /* border:rgb(162, 170, 162); */
+    /* border-style: solid; */
+    margin:5%;
     border-radius: 5px;
 }
 
@@ -34,7 +39,7 @@
     border:1px solid black ;
     border-radius: 5px;
     font-size: 15px;
-    background-color: rgb(235, 235, 235);
+    background-color: rgba(255, 255, 255, 0.719);
 }
 
 #add{
