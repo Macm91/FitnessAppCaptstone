@@ -2,6 +2,7 @@ import React, { useState ,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import axios from "axios";
+import "./AddWE.css";
 
 
 
@@ -75,6 +76,9 @@ const handleChangeWeight =(event)=>{
 
 
         <div>
+            <h3> Last step:</h3>
+            <p>Enter the weight, sets and reps for this exercise</p>
+            <form className="addtoWE">
             <label><large>Weight</large></label>
                 <input
                     name="weight"
@@ -94,18 +98,21 @@ const handleChangeWeight =(event)=>{
                     value={reps}
                 />
           
-          <label>Notes</label>
-                <input
+          <label >Notes</label>
+                <input id="notes"
                     name="lastname"
                     onChange={handleChangeNotes}
                     value={notes}
                 />
+
+            </form>
+
             <form
-            className="addExercise"
+            className="addWE"
             onSubmit={(event) => handleSubmit(event)}
             >
             
-            <button type="submit">Create Workout</button>
+            <button type="submit">Add To Workout</button>
             </form>
             </div> 
 

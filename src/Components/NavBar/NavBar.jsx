@@ -13,7 +13,7 @@ import "./NavBar.css";
 const NavBar = ({user}) => {
   
   return ( 
-    <Navbar class="navbar navbar-expand-lg navbar-dark bg-dark" expand="lg " >
+    <Navbar class="navbar" expand="lg " >
     <container>
       {user && <p/>}
       

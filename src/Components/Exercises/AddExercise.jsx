@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Exercises.css";
 
 class AddExerciseForm extends Component{
     constructor (props){
@@ -28,7 +29,8 @@ class AddExerciseForm extends Component{
 
    render() { 
        return ( 
-           <footer>
+           <div className="addExercise">
+               <h4 id="add">Add Exercise</h4>
            <form onSubmit= {this.handleSubmit}>
                <label>Exercise Name</label>
                <input name="name" onChange={this.handleChange} value={this.state.name}/>
@@ -36,12 +38,12 @@ class AddExerciseForm extends Component{
                <input name="body_part" onChange={this.handleChange} value={this.state.body_part}/>
                <label>Equipment</label>
                <input name="equipment" onChange={this.handleChange} value={this.state.equipment}/>
-               
+               <br/>
               
                <button type="submit">Create Exercise</button>
 
            </form>
-           </footer>
+           </div>
         );
    }
 }

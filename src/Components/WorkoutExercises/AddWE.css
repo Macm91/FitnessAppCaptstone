@@ -1,0 +1,13 @@
+.addWE{
+    border:none;
+}
+
+.addtoWE {
+    display: flex;
+    flex-direction: column;
+}
+
+#notes{
+    height:6em;
+    background-color: rgb(184, 183, 183);
+}

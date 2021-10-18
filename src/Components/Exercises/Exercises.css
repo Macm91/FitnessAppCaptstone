@@ -14,3 +14,31 @@
 .h3Ex{
     color: rgba(245, 245, 245, 0.815);
 }
+
+
+.addExercise{
+    border:rgb(162, 170, 162);
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.addExercise input{
+    display: flex;
+    flex-direction: column;
+    min-width: 30em;
+    height: 1em;
+    padding: 20px 0;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    outline: none;
+    border:1px solid black ;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: rgb(235, 235, 235);
+}
+
+#add{
+    color:whitesmoke;
+    margin-left:35%;
+}
+

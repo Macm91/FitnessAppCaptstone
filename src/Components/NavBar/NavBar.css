@@ -8,3 +8,8 @@ Nav{
 Link{
     color: black;
 }
+
+.navbar{
+    background-color: transparent;
+    color:whitesmoke
+}
