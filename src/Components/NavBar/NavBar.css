@@ -13,3 +13,39 @@ Link{
     background-color: transparent;
     color:whitesmoke
 }
+
+
+
+.link{
+    color:whitesmoke;
+    text-decoration: none;
+}
+
+#basic-nav-dropdown{
+    background-color: rgb(5, 5, 5);
+}
+
+.droplink{
+    width:10em;
+    color: rgb(3, 3, 3);
+    padding: 1em;
+    margin: 0;
+    text-decoration: none
+}
+
+.tem{
+    background-color: black;
+}
+
+.logoutLink{
+    color:red;
+    text-decoration: none;
+}
+
+.me-auto{
+    color:cornsilk;
+}
+
+.Navbar{
+    color:whitesmoke
+}

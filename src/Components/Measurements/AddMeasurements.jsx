@@ -2,7 +2,7 @@ import React, { useState ,useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import axios from "axios";
-
+import "./AddMeasurement.css";
 
 
 const WorkoutFolder = (props) => {
@@ -62,8 +62,8 @@ const handleSubmit = (e) => {
         );
     }
     return(
-        <div className="WF_list">
-        <h1> Add Measurements </h1>
+        <div className="AM">
+        <h1 className="AddMeasurements"> Add Measurements </h1>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <label>Body Part</label>
                     <input name="bodyPart" onChange={handleChangeBP} value={bodyPart}/>
@@ -75,9 +75,7 @@ const handleSubmit = (e) => {
             </form>
                 
             
-            <button >
-                
-            </button>
+            
         </div>
     );
 }

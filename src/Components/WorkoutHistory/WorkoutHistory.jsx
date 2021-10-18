@@ -1,6 +1,7 @@
 import React, { useState ,useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./WorkoutHistory.css";
 
 
 
@@ -30,7 +31,7 @@ const WorkoutHistory = (props) => {
 
     if (!conditonal){
         return(
-        <button onClick={event=>{handleClick()}}><h1> Loading...</h1></button>
+        <button className="clicktoOpen" onClick={event=>{handleClick()}}><h1> Click to Open</h1></button>
             );
     }else{
     return(
@@ -59,9 +60,7 @@ const WorkoutHistory = (props) => {
                     )
                 })}
             
-            <button >
-                <Link to='/exercises'>Exercises</Link>
-            </button>
+            
         </div>
     );
     }

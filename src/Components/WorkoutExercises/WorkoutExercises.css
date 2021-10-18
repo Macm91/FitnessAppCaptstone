@@ -1,8 +1,8 @@
 .WE_list{
-color:whitesmoke;
-display: flex;
+    color:whitesmoke;
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:initial;
     justify-content: center;
 }
 
@@ -31,3 +31,8 @@ display: flex;
 
 }
 
+
+.contents{
+    margin: 2em;
+    
+}

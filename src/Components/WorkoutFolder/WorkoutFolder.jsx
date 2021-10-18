@@ -51,7 +51,7 @@ const WorkoutFolder = (props) => {
                         </svg></Link>
             </button>
             
-            <div className="col overflow-auto">
+            <div >
                 {folders.map((val, index)=> {
                     
                     return(

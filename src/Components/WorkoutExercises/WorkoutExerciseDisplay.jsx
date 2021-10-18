@@ -58,7 +58,7 @@ const WorkoutExerciseDisplay = (props) => {
                     
                     
                     return(
-                        <div>
+                        <div className="contents">
                         
                        
                         <div key={index}>
@@ -80,6 +80,7 @@ const WorkoutExerciseDisplay = (props) => {
                                 </svg>
                                 Delete Exercise
                             </button>
+                            <hr/>
                         </div>
                       
                         
