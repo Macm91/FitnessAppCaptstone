@@ -1,5 +1,6 @@
 import React, { useState ,useEffect } from "react";
 import { Redirect } from "react-router";
+import "./Exercises.css";
 
 // import { render } from "@testing-library/react";
 
@@ -36,20 +37,22 @@ const Exercises = (props) => {
     }
         return(
         <div className="exercise_list">
-        
+        <h3 className="h3Ex">Select an exercise:</h3>
                 {exercises.map((val, index)=> {
                     return(
-                        <ul>
+                        
                         
                         <div key={index}>
-                        <button onClick={event => {handleClick(val.name)}}>
-                            <h3> {val.name}</h3>
-                            <p> {val.body_part}</p>
-                            <p> {val.equipment}</p>
-                       
+                        <button className="exerciseBtn" onClick={event => {handleClick(val.name)}}>
+                        
+                            <p> <b>{val.name}</b><br/>
+                            Boady Part: {val.body_part}  
+                            <br/>   Equipment: {val.equipment}</p>
+                            
+                      
                         </button>
                         </div>
-                        </ul>
+                        
                         
                     )
                 })}

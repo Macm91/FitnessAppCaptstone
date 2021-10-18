@@ -176,7 +176,7 @@ getWorkoutExercises = async (fk)=>{
 render(){
   const user = this.state.user;
 return(
-  <div>
+  <div className="container">
     <NavBar className="navbar" user = {user}/>   
     
 

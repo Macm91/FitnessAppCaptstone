@@ -42,7 +42,7 @@ const WorkoutFolder = (props) => {
             props: {workouts: workouts} }}/>);
     }
     return(
-        <div className="WF_list"  > 
+        <div className="WF_list" > 
             <h1>Workout Folders</h1>
             <button className="addBtn">
                     <Link to='/AddWorkoutFolder'><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
