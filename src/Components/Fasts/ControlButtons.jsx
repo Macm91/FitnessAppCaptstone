@@ -20,7 +20,7 @@ export default function ControlButtons(props) {
       </div>
       <div className="btn btn-two" 
            onClick={props.handleSubmit}>
-        End 
+        End Fast
       </div>
     </div>
     

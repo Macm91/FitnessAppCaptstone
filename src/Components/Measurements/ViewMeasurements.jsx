@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 // import { Redirect } from "react-router";
 import axios from "axios";
 import {Line} from 'react-chartjs-2';
+import "./ViewMeasurements.css"
 
 
 
 
 const ViewMeasurements = (props) => {
     const [user, setUser] = useState([])
-    const [measurements, setMeasurements] = useState([])
-    // const [openTable, setOpenTable] = useState(false)
     const [chartData, setChartData] = useState({})
-    const [userMeasurements, setUserMeasurements] = useState([])
-    const [bodyPart, SetBodyPart] = useState('Weight')
-    const [dates, setDates] = useState([])
+    const [measurements, setMeasurements] = useState([])
+    
     
 
+    let userMeasurements =[]
+    let bodyPart =[]
+    let date = [] 
     
     
     
@@ -33,6 +34,25 @@ const ViewMeasurements = (props) => {
         get_user_measurements()
     }
 
+    const handleClick= (e) =>{
+        console.log(e)
+        const M = userMeasurements.push(e.measurement)
+        console.log(M);
+        const bp = bodyPart.push(e.body_part)
+        const D = date.push(e.date)
+        console.log(bp)
+        console.log(bodyPart)
+        console.log (date);
+        chart();
+        
+        // let BP = val.body_part;
+        // let M = val.measurement;
+        // let D = val.date;
+
+        // if (BP == Hips){
+
+        // }
+   }
 
 
     const chart = ()=>{
@@ -41,20 +61,24 @@ const ViewMeasurements = (props) => {
             datasets:[
                 {
                     label: bodyPart,
-                    data: measurements,
+                    data: userMeasurements,
                     badkgroundColor: [
                         'rgba(75, 192, 192, .06)'
                     ],
                     borderWidth: 4
+                },
+                {
+                    label: "Weight",
+                    data: [140, 150, 155, 145],
+                    fill: false,
+                    borderColor: "#98B9AB"
+            
                 }
             ]
         })
     }
 
 
-//     const handleClick= (val) =>{
-        
-//   }
 
 
   const get_user_measurements = async() =>{
@@ -62,7 +86,6 @@ const ViewMeasurements = (props) => {
       let response = await axios.get(`http://127.0.0.1:8000/api/measurements/all/${user}`);
       setMeasurements(response.data);
       console.log("Measurements",measurements);
-
       chart();
     //   console.log("Measurement data set in view mes",response.data);
     //   props.setUserMeasurements(response.data)
@@ -70,22 +93,17 @@ const ViewMeasurements = (props) => {
    
 
 
-
-    // if (clicked){
-    //     return(
-            
-    //     );
-    // }
+    
     return(
         <div className="WF_list">
        
        <div className="WF_list">
         <h1> Measurements Table</h1>
                
-            <div style= {{height: "500px", width: "500px"}}>
-               <Line data = {chartData} options = {{
+            <div style= {{height: "500px", width: "500px", color: "whitesmoke"}}>
+               <Line className="chart" data = {chartData} options = {{
                    responsive: true,
-                   title: {text: "Measurements", display: true},
+                   title: {text: "Measurements", display: true, color:"white.l"},
                }}/>
             </div>
 
@@ -100,11 +118,12 @@ const ViewMeasurements = (props) => {
                         <div>
                         
                         {/* <button className="folderButton" onClick={event => {handleClick(val.id)}}> */}
-                        <div key={index} on>
+                        <div key={index}>
+                            <button onClick={event => {handleClick(val)}}>
                             <h3> {val.body_part}</h3>
                             <p>{val.measurement}</p> 
                             <p>{val.date}</p>                           
-                            
+                            </button>
 
                         </div>
                         </div>
