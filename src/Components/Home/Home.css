@@ -1,6 +1,6 @@
 .Btn{
-    height: 12em;
-    width: 12em;
+    height: 18em;
+    width: 18em;
     margin: 20px;
     margin-top: 30%;
     border-radius: 2em;
@@ -10,8 +10,8 @@
 }
 
 img{
-    height: 12em;
-    width:12em;
+    height: 18em;
+    width:18em;
     border-radius: 2em;
     border-color: rgb(182, 180, 180);
     border-style:double;

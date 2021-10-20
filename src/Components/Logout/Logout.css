@@ -4,7 +4,7 @@
      align-items: center;
      justify-content: center;
      height: 100vh;
-     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
  }
 
  .logout_botton{
@@ -15,10 +15,16 @@
      border: none;
      color: white;
      font-size: 14px;
-     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
      border-radius: 3px;
  }
 
  .user_name{
      color: #8d0ada;
+ }
+
+ .logout_btn{
+     color: black;
+     padding: 3%;
+     margin:5%;
+
  }

@@ -25,16 +25,18 @@ class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let newUser = {
+    let newUser = 
+    {
       username: this.state.username,
       password: this.state.password,
-      email: this.state.email,
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-    };
+      email : this.state.email,
+      first_name : this.state.first_name,
+      last_name: this.state.last_name
+  };
+  
     console.log(newUser);
     console.log(this.state);
-    this.registerUser(this.state);
+    this.registerUser(newUser);
     alert ("User Created. Go to Login");
   };
 
@@ -69,15 +71,15 @@ class Register extends Component {
           <h1>Register </h1>
           <label for="floatingInput">First Name</label>
               <input
-                name="firstname"
+                name="first_name"
                 onChange={this.handleChange}
-                value={this.state.firstname}
+                value={this.state.first_name}
               />
           <label>Last Name</label>
               <input
-                name="lastname"
+                name="last_name"
                 onChange={this.handleChange}
-                value={this.state.lastname}
+                value={this.state.last_name}
               />
           <label>Email</label>
               <input
