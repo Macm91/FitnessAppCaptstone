@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./FastCountdownTimer.css";
 import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 
 
 
@@ -141,6 +142,18 @@ return(
     <div className="fastingTimer">
       
 
+      
+
+
+
+    <div class="container">
+    <div class="row">
+      <div class="col-2">
+          <p> Start Time: <br/>
+          {month}/{day} at {hours}:{minutes}</p>
+      </div>
+
+      <div class="col-8">
       <div className="buttons">
         <h1>
         <button className="decrement" onClick={decrement}>
@@ -156,17 +169,21 @@ return(
         </button>
         </h1>
       </div>
-<p> Start Time: </p>
-<pr>{month}/{day} at {hours}:{minutes}</pr>
+      </div>
+
+      <div class="col-2">
+      <p>End Time:   {month}/{dayEnd} at {hoursEnd}:{minutesEnd} </p>
+      </div>
+
+      
+        <button onClick={addFast}>Start</button>
+
+        <button onClick={get_user_fast}>Get Fasts</button>
 
 
-
-<button onClick={addFast}>Start</button>
-
-<button onClick={get_user_fast}>Get Fasts</button>
-
-
-<p>End Time:   {month}/{dayEnd} at {hoursEnd}:{minutesEnd} </p>
+        
+    </div>
+    </div>
     </div>
 );
 
