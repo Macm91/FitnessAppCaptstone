@@ -222,7 +222,9 @@ return(
                   <Route path="/addWorkoutExercise" 
                         render ={(props) => (
                         <AddWorkoutExercise {...props} chosenExercise={this.state.chosenExercise} workoutID={this.state.workoutID}/>)}/>
-                  <Route path="/fastTimer" component = {FastCountdownTimer}/>
+                  <Route path="/fastTimer" 
+                    render ={(props) => (
+                    <FastCountdownTimer {...props} user={this.state.user.user_id} />)}/>
                   <Route path="/workoutHistory" 
                         render ={(props) => (
                         <WorkoutHistory {...props} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
