@@ -8,9 +8,9 @@ import axios from "axios";
  const FastCountdownTimer = (props) => {
 
     const [endTime, setEndTime] = useState("00")
-    const [startTime, setStartTime] = useState(new Date().toLocaleDateString())
+    const [startTime, setStartTime] = useState(new Date().toLocaleTimeString())
     const [completed, setCompleted] = useState(false)
-    const [count, setCount] = useState(16)
+    const [count, setCount] = useState(0)
 
     const [year, setYear] = useState(new Date().getUTCFullYear())
     const [month, setMonth] = useState(new Date().getUTCMonth())
@@ -18,6 +18,16 @@ import axios from "axios";
     const [hours, setHours] = useState(new Date().getUTCHours())
     const [minutes, setMinutes] = useState(new Date().getUTCMinutes())
     const [seconds, setSeconds] = useState(new Date().getUTCSeconds())
+
+
+
+    
+    const [dayEnd, setDayEnd] = useState(new Date().getUTCDate())
+    const [hoursEnd, setHoursEnd] = useState(new Date().getUTCHours())
+    const [minutesEnd, setMinutesEnd] = useState(new Date().getUTCMinutes())
+    
+
+
 
     const [djangoTime, setDjangoTime] = useState()
     const [user, setUser] = useState()
@@ -35,10 +45,52 @@ import axios from "axios";
 
     const increment=()=>{
       setCount(count+1)
+        
+      if(hoursEnd<23){
+          setHoursEnd(hoursEnd + 1)
+      }
+      else if (hoursEnd === 23){
+        setDayEnd(dayEnd +1)
+        setHoursEnd(0)
+      }
+
+
+
+      // if (count <24){
+      //   setHoursEnd(hoursEnd + 1)
+      // }
+      // else if (count === 24){
+      //   setDayEnd(dayEnd +1)
+      // }
+      // else if (count > 24 && count < 48){
+      //   setDayEnd(dayEnd +1)
+      //   setHoursEnd(hours + (count-24))
+      // }
     };
 
+
+
+
+
     const decrement=()=>{
-      setCount(count-1)
+      if (count === 0) {
+        setCount(0)
+      }
+      else{
+      setCount(count-1);
+      decrementHours();
+      }
+    };
+
+
+    const decrementHours = () =>{
+      if(hoursEnd === 0){
+        setHoursEnd(23)
+        setDayEnd(dayEnd -1)
+    }
+    else if(hoursEnd ){
+      setHoursEnd(hoursEnd - 1)
+    }
     };
 
 
@@ -75,11 +127,10 @@ import axios from "axios";
 
   const get_user_fast = async() => {
     let response = await axios.get(`http://127.0.0.1:8000/api/fasts/all/${user}`)
+    setFastDetails(response.data)
     console.log(user)
     console.log(response.data)
-    // .then(()=>setFastDetails(response.data));
-    
-    // console.log(fastDetails)
+
 } 
 
 
@@ -105,17 +156,17 @@ return(
         </button>
         </h1>
       </div>
-<p> Current Time: </p>
-<pr>{year}-{month}-{day}T{hours}:{minutes}:{seconds}Z</pr>
+<p> Start Time: </p>
+<pr>{month}/{day} at {hours}:{minutes}</pr>
 
-<button onClick={setStartInput}>Set Django</button>
 
-<button onClick={addFast}>Add Fast</button>
+
+<button onClick={addFast}>Start</button>
 
 <button onClick={get_user_fast}>Get Fasts</button>
 
 
-
+<p>End Time:   {month}/{dayEnd} at {hoursEnd}:{minutesEnd} </p>
     </div>
 );
 
