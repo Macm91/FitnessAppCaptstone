@@ -22,12 +22,14 @@ import axios from "axios";
     const [djangoTime, setDjangoTime] = useState()
     const [user, setUser] = useState()
 
+    const [fastDetails, setFastDetails] = useState({})
+
     
 
 
     useEffect(()=> {
-    setStartInput()
     setUser(props.user)
+    setStartInput()
   }, [props.user])
 
 
@@ -71,6 +73,17 @@ import axios from "axios";
 
 
 
+  const get_user_fast = async() => {
+    let response = await axios.get(`http://127.0.0.1:8000/api/fasts/all/${user}`)
+    console.log(user)
+    console.log(response.data)
+    // .then(()=>setFastDetails(response.data));
+    
+    // console.log(fastDetails)
+} 
+
+
+
 
 
 return(
@@ -99,7 +112,7 @@ return(
 
 <button onClick={addFast}>Add Fast</button>
 
-
+<button onClick={get_user_fast}>Get Fasts</button>
 
 
 
