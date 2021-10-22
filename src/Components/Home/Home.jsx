@@ -19,7 +19,7 @@ const Home = (props) => {
     return(<Redirect to = '/workoutFolder'/>);
 }
   if (fasting){
-    return(<Redirect to='/fastTimer'/>);
+    return(<Redirect to='/getFastHistory'/>);
 }
 if (measure){
   return(<Redirect to='/viewMeasurements'/>);
