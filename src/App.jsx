@@ -23,6 +23,7 @@ import AddMeasurements from "./Components/Measurements/AddMeasurements";
 // import MeasurementsTable from "./Components/Measurements/MeasurementsTable";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
+import FastingHistory from "./Components/Fasts/FastingHistory";
 
 
 
@@ -38,7 +39,7 @@ class App extends Component{
     workoutExercises: [],
     chosenExercise: "",
     userID: 0,
-    userMeasurements: []
+    userMeasurements: [],
   }
   
 
@@ -58,9 +59,7 @@ class App extends Component{
       console.log("use != jwtdecpde")
     };
     this.getExercises();
-    this.getUserFolders();
-    // console.log("state",this.exercises);
-    
+    this.getUserFolders();    
 }
 
 
@@ -173,6 +172,19 @@ getWorkoutExercises = async (fk)=>{
 
 
 
+// set_active_fast= (e) => {
+//   this.setState({
+//     activeFast : e
+//   });
+//   console.log ("user measurements after set in app: ", this.state.user_measurements)
+// }
+
+
+
+
+
+
+
 render(){
   const user = this.state.user;
 return(
@@ -238,6 +250,9 @@ return(
                         render ={(props) => (
                         <MeasurementsTable {...props} user={this.state.user.user_id}
                          userMeasurements= {this.state.userMeasurements}/>)}/> */}
+                    {/* <Route path="/fastingHistory" 
+                    render ={(props) => (
+                    <FastingHistory {...props} user={this.state.user.user_id}  />)}/> */}
       </Switch>
   </div>
  
