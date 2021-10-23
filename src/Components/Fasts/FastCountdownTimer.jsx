@@ -3,6 +3,7 @@ import "./FastCountdownTimer.css";
 import axios from "axios";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import FastHistList from "./FastHistList";
+import { Redirect } from "react-router";
 
 
 
@@ -10,13 +11,8 @@ import FastHistList from "./FastHistList";
 
 
  const FastCountdownTimer = (props) => {
-    // const [clicked, setClicked] = useState(false)
-    // const [doubleClicked, setDoubleClicked] = useState(false)
-    // const [endTime, setEndTime] = useState("00")
-    // const [startTime, setStartTime] = useState(new Date().toLocaleTimeString())
-    // const [completed, setCompleted] = useState(false)
     const [count, setCount] = useState(0)
-
+    const [clicked, setClicked] = useState(false)
     const [year, setYear] = useState(new Date().getUTCFullYear())
     const [month, setMonth] = useState(new Date().getUTCMonth())
     const [day, setDay] = useState(new Date().getUTCDate())
@@ -45,20 +41,9 @@ import FastHistList from "./FastHistList";
     setUser(props.user)
     setStartInput()
     
-    // contingent()
+   
   }, [props])
-
-
-
-  // const contingent=()=>{
-    
-  //     setHoursEnd(currentFast)
-  //     console.log("end fast current: ",currentFast)
-    
-    
-  // }
-
-
+console.log("af",props.activeFast)
 
   const reset = () => {
     setCount(0);
@@ -131,24 +116,25 @@ import FastHistList from "./FastHistList";
         "completed": false
     }
     console.log(fast)
-      axios.post('http://127.0.0.1:8000/api/fasts/', fast)
+      axios.post('http://127.0.0.1:8000/api/fasts/', fast).then (()=>setClicked(true))
     
       
   } 
 
-  const endFast = (currentFast) => {
+  const endFast = async(e) => {
     setStartInput();
     let fast = {
-      "user": currentFast.user,
-      "start": currentFast.start,
+      "user": user,
+      "start": e[0].start,
       "end": `${djangoTime}`,
       "total_duration": count,
       "completed": true
   }
-  console.log("cf ef",currentFast)
-  console.log("fast obj",fast)
-  // console.log(fast)
-  //   axios.put(`http://127.0.0.1:8000/api/fasts/${currentFast.id}/`, fast)
+  console.log("fast obj",e)
+  console.log("obj of end function",fast)
+  console.log("fast id", e[0].id)
+    await axios.put(`http://127.0.0.1:8000/api/fasts/${e[0].id}/`, fast).then (()=>setClicked(true))
+  
 
   } 
 
@@ -162,12 +148,17 @@ const StartButtons = (
 
 const ActiveFast = (
   <div>
-    <button onClick={endFast({currentFast})}>End</button>
+    <button onClick={(e)=>endFast(props.activeFast)}>End</button>
   </div>
 )
 
 
 
+
+if (clicked){
+  return<Redirect to='/'/>
+}
+else{
  
     return(
     <div>
@@ -203,10 +194,11 @@ const ActiveFast = (
         </div>
 
         
-          {/* <div className="timer-buttons">
-            {currentFast.length === 0 ? StartButtons : ActiveFast}
-          </div> */}
+          <div className="timer-buttons">
+            {props.activeFast.length === 0 ? StartButtons : ActiveFast}
+          </div>
 
+    
           
       </div>
       </div>
@@ -214,8 +206,9 @@ const ActiveFast = (
       </div>
       
       )
-}
-      
+
+ }
+ }   
 
 
 export default FastCountdownTimer;
