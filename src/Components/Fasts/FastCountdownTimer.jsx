@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FastCountdownTimer.css";
 import axios from "axios";
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-import FastHistList from "./FastHistList";
 import { Redirect } from "react-router";
 
 
@@ -27,6 +25,8 @@ import { Redirect } from "react-router";
     const [djangoTime, setDjangoTime] = useState()
     const [djangoTimeEnd, setDjangoTimeEnd] = useState()
     const [user, setUser] = useState()
+    const [hist, setHist] = useState(["Start a fast to add to fast history"])
+
 
    
     const [currentFast, setCurrentFast] = useState([])
@@ -37,11 +37,11 @@ import { Redirect } from "react-router";
     useEffect(()=> {
       console.log("user fast",props.user)
       console.log("active passed fast",props.activeFast)
+      console.log("hist passed fast",props.fastHist)
     setCurrentFast(props.activeFast)
+    setHist(props.fastHist)
     setUser(props.user)
     setStartInput()
-    
-   
   }, [props])
 console.log("af",props.activeFast)
 
@@ -74,6 +74,21 @@ console.log("af",props.activeFast)
       }
     };
 
+    const click=()=>{
+      
+        hist.map((val, index)=>{
+            return(
+              <div key={index}>
+                  <h3> {val.start}</h3>
+                      <p>{val.total_duration}</p> 
+                      <hr/>  
+              </div>
+            )
+          })
+        
+      
+    };
+
 
     const decrementHours = () =>{
       if(hoursEnd === 0){
@@ -96,6 +111,7 @@ console.log("af",props.activeFast)
       setDjangoTime(year +"-"+month+"-"+day+"T"+hours+":"+minutes+":"+seconds+"Z")
       console.log(djangoTime)
       console.log(`${djangoTime}`)
+      
     }
 
     const setEndInput = () => {
@@ -140,19 +156,21 @@ console.log("af",props.activeFast)
 
 
 const StartButtons = (
-  <div>
-    <button onClick={addFast}>Start</button>
+  <div className="start_buttons">
+    <button id="start" onClick={addFast}>Start</button>
     <button onClick={reset}>Reset</button>  
   </div>
 )
 
-const ActiveFast = (
-  <div>
-    <button onClick={(e)=>endFast(props.activeFast)}>End</button>
-  </div>
-)
 
 
+const ActiveFast =(
+    <div className="start_buttons">
+    <button id="endbutton" onClick={(e)=>endFast(props.activeFast)}>End</button>
+      </div>)
+  
+
+    
 
 
 if (clicked){
@@ -203,6 +221,7 @@ else{
       </div>
       </div>
       </div>
+      <button className="click" onClick={click}>Fasting History</button> 
       </div>
       
       )

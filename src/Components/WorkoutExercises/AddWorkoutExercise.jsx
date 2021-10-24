@@ -14,6 +14,7 @@ const AddWorkoutExercise = (props) => {
     const [exercise, setExercise] = useState()
     const [weight, setWeight] = useState ()
     const [clicked, setClicked] = useState(false)
+    const [workoutName, setWorkoutName] = useState([])
 
  
     // const [exID, ]
@@ -21,6 +22,7 @@ const AddWorkoutExercise = (props) => {
     useEffect(()=> {
         setExercise(props.chosenExercise);
         setWorkout(props.workoutID)
+        setWorkoutName(props.workout_name)
     }, [props]);
 
 console.log ("addex exercises", exercise)

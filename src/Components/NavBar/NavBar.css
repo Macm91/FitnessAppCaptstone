@@ -1,57 +1,45 @@
-Nav{
- text-emphasis-color: white;
- background-color: rgb(39, 39, 39);
-}
-
-
-
-Link{
-    color: black;
-}
-
-.navbar{
-    background-color: transparent;
-    color:whitesmoke
-}
-
-
 
 .link{
     color:whitesmoke;
     text-decoration: none;
+    list-style-type: none;
+    padding: 2%;;
 }
 
-#basic-nav-dropdown{
-    background-color: rgb(5, 5, 5);
-}
-
-.droplink{
-    width:10em;
-    color: rgb(3, 3, 3);
-    padding: 1em;
-    margin: 0;
-    text-decoration: none
-}
-
-.tem{
-    background-color: black;
-}
 
 .logoutLink{
+ 
+    text-decoration: none;
+    list-style-type: none;
+    padding: 2%;;
     color:red;
     text-decoration: none;
+    list-style-type: none;
+    
 }
 
-.me-auto{
-    color:cornsilk;
-}
 
-.Navbar{
-    color:whitesmoke
-}
 
 .registerLink{
     color:rgb(2, 0, 0);
     text-decoration: none;
         
 }
+
+.nav{
+    background-color:rgba(5, 5, 5, 0.219);
+    margin: 0px;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    min-width: 30em;
+    font-size: large;
+
+}
+    
+
+.body{
+    margin: 0px;
+}
+
+

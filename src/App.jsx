@@ -23,8 +23,8 @@ import AddMeasurements from "./Components/Measurements/AddMeasurements";
 import GetFastHist from "./Components/Fasts/GetFastHistory";
 import FastHistList from "./Components/Fasts/FastHistList";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./App.css"
-
+import "./App.css";
+import Calendar from "./Components/Calendar";
 
 
 
@@ -42,9 +42,10 @@ class App extends Component{
     userID: 0,
     userMeasurements: [],
     activeFast: {},
-    fastHist:[]
+    fastHist:[],
+    workoutName:''
   }
-  
+
 
   componentDidMount() {
     const jwt = localStorage.getItem('token');
@@ -125,6 +126,13 @@ workoutSetID = (val) => {
   })
 }
 
+workoutSetName=(val) =>{
+  this.setState({
+    workoutName : val
+  })
+}
+
+
 chosenExerciseSetID = (val) => {
   this.setState({
     chosenExercise : val
@@ -149,7 +157,9 @@ getFolderWorkouts = async (folder)=>{
 
 }
 setFolderId = async (id)=>{
-  this.setState({})
+  this.setState({
+    folderID : id
+  })
 }
 
 
@@ -187,6 +197,7 @@ setFastHist= (e) => {
     fastHist : e
   });
   console.log ("state fast hist: ", this.state.fastHist)
+  console.log("e hist", e)
 }
 
 
@@ -227,7 +238,7 @@ return(
                         <AddWorkoutFolder {...props} user= {this.state.user}/>)}/>
                   <Route path="/workouts" 
                         render ={(props) => (
-                        <Workouts {...props} workouts = {this.state.workouts} workoutSetID={this.workoutSetID} 
+                        <Workouts {...props} workouts = {this.state.workouts} workoutSetName={this.workoutSetName} workoutSetID={this.workoutSetID} 
                         getWorkoutExercises={this.getWorkoutExercises}/>)}/>
                   <Route path ='/addWorkout'
                         render ={(props) => (
@@ -238,16 +249,16 @@ return(
                   <Route path = '/workoutExerciseDisplay' 
                         render ={(props) => (
                         <WorkoutExerciseDisplay {...props} allExercises = {this.state.exercises} 
-                        workoutExercises={this.state.workoutExercises} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
+                        workoutExercises={this.state.workoutExercises} workoutName={this.state.workoutName} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
                   <Route path="/addWorkoutExercise" 
                         render ={(props) => (
                         <AddWorkoutExercise {...props} chosenExercise={this.state.chosenExercise} workoutID={this.state.workoutID}/>)}/>
                   <Route path="/fastTimer" 
                     render ={(props) => (
-                    <FastCountdownTimer {...props} user={this.state.user.user_id} activeFast={this.state.activeFast}  fastHist={this.state.fastHist} />)}/>
+                    <FastCountdownTimer {...props} user={this.state.user.user_id} fastHist={this.state.fastHist} activeFast={this.state.activeFast}   />)}/>
                   <Route path="/workoutHistory" 
                         render ={(props) => (
-                        <WorkoutHistory {...props} user={this.state.user} workoutID={this.state.workoutID}/>)}/>
+                        <WorkoutHistory {...props} user={this.state.user} workoutID={this.state.workoutID} workoutName={this.state.workoutName}/>)}/>
                    <Route path="/viewMeasurements" 
                         render ={(props) => (
                         <ViewMeasurements {...props} user={this.state.user.user_id} setUserMeasurements={this.setUserMeasurements} />)}/>
@@ -260,7 +271,7 @@ return(
                     <Route path="/fastHistList" 
                     render ={(props) => (
                     <FastHistList {...props}  fastHist={this.state.fastHist}/>)}/>
-                  
+                    
       </Switch>
   </div>
  

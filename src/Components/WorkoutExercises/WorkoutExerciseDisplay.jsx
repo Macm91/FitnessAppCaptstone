@@ -13,9 +13,11 @@ const WorkoutExerciseDisplay = (props) => {
     const [redirect, setRedirect] = useState(false)
     const [user, setUser] = useState ()
     const [workout, setWorkout] = useState ()
+    const [workoutName, setWorkoutName] = useState('')
      
     useEffect(()=> {
         setWExercises(props.workoutExercises)
+        setWorkoutName(props.workoutName)
         setAllExercises(props.allExercises)
         setUser(props.user)
         setWorkout(props.workoutID)
@@ -40,7 +42,9 @@ const WorkoutExerciseDisplay = (props) => {
         let wh = {
             user : user.user_id, 
             workout: workout, 
+            workout_name: workoutName
         }
+        console.log("wh",wh)
         axios.post(`http://127.0.0.1:8000/api/wf/workout/history/`, wh)
     }
 

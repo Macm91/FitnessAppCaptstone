@@ -46,8 +46,9 @@ const WorkoutHistory = (props) => {
                         <div key={index} on>
                             
                            
-                            <h3> {val.workout}</h3>
+                            <h3> {val.workout_name}</h3>
                             <p>{val.date}</p> 
+                            
                             <hr/>    
                             
 

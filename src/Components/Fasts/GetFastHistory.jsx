@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./FastCountdownTimer.css";
 import axios from "axios";
 import FastCountdownTimer from "./FastCountdownTimer";
+import './FastCountdownTimer.css'
 
 
 const GetFastHist = (props) => {
@@ -39,7 +40,7 @@ const GetFastHist = (props) => {
 
 
     if (clicked){
-        return(<button onClick={doubleclick}>Get Fasting History</button> );
+        return(<button className="open" onClick={doubleclick}>Open Fast Timer</button> );
         }
     else if (doubleClicked){
         return(
@@ -47,7 +48,8 @@ const GetFastHist = (props) => {
         );
     }
     else{
-        return(<button onClick={click}>Get Fasting History</button>)
+        return(<button className="open" onClick={click}>
+          Open Fast Timer</button>)
         }
 
 }

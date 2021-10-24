@@ -15,7 +15,7 @@ const ViewMeasurements = (props) => {
     
     
 
-    let userMeasurements =[]
+    const userMeasurements =[]
     let bodyPart =[]
     let date = [] 
     
@@ -121,7 +121,7 @@ const ViewMeasurements = (props) => {
                         
                         {/* <button className="folderButton" onClick={event => {handleClick(val.id)}}> */}
                         <div key={index}>
-                            <button onClick={event => {handleClick(val)}}>
+                            <button className="measurementbuton" onClick={event => {handleClick(val)}}>
                             <h3> {val.body_part}</h3>
                             <p>{val.measurement}</p> 
                             <p>{val.date}</p>                           

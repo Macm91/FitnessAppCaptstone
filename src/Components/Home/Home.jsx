@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import "./Home.css";
 import { Redirect } from "react-router";
-import userEvent from "@testing-library/user-event";
+import Calendar from "../Calendar"
 
 
 
@@ -55,6 +55,9 @@ if (measure){
     </Col>
   </Row>
 </Container>
+
+
+<div id='calendar'><Calendar/></div>
       
 
 
@@ -67,3 +70,6 @@ if (measure){
 }
 
 export default Home ;
+
+
+

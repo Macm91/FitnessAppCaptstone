@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
-// import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
-// import Navbar.Toggle from "react-bootstrap/esm/NavbarToggle";
-import { NavDropdown } from "react-bootstrap";
+import { NaNav } from "react-bootstrap";
 import "./NavBar.css";
 
 
@@ -14,51 +11,48 @@ const NavBar = ({user}) => {
   
   return ( 
 
-    
-    <Navbar class="navbar .bg-light" expand="lg " >
-    <container>
-      {user && <p/>}
+    <div className="nav">
+      {/* {user && <p/>} */}
       
-      <Navbar.Toggle className="toggle"/>
-      <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-      <Navbar.Brand> <Link className="link" to='/'> Home </Link> </Navbar.Brand>
+      
+     
         
 
 
         {!user &&
-          <React.Fragment>
-
-          <Nav.Link href="#register"><Link className="registerLink" to='/register'><b>Register</b></Link></Nav.Link>
-          <Nav.Link href="#login"><Link className="registerLink" to='/login'><b>Login</b></Link></Nav.Link>
+          <div className="nav">
+          <Link className="link" to='/'> Home </Link> 
+          <Link className="link" to='/register'><b>Register</b></Link>
+          <Link className="link" to='/login'><b>Login</b></Link>
 
          
-          </React.Fragment>
+          </div>
         }
         {user &&
-          <React.Fragment>
+        
+
+          <div className="nav" >
+          <Link className="link" to='/'> Home </Link> 
+          <Link className="link" to='/workoutFolder'>Workout Folders</Link>
+          <Link className="link" to='/getFastHistory'>Start A Fast</Link>
+          <Link className="link" to='/viewMeasurements'>Measurements</Link>
+          <Link  className="link" to='/workoutHistory'>Workout History</Link>
+     
 
 
-          <NavDropdown title={<span className="text-white my-auto">Account</span>}  >
-            <NavDropdown.Item  href="#workoutFolder"><Link className="droplink" to='/workoutFolder'>Workout Folders</Link></NavDropdown.Item>
-            <NavDropdown.Item  href="#fastTimer"><Link className="droplink" to='/fastTimer'>Start A Fast</Link></NavDropdown.Item>
-            <NavDropdown.Item  href="#viewMeasurements"><Link className="droplink" to='/viewMeasurements'>Measurements</Link></NavDropdown.Item>
-            <NavDropdown.Item  href="#workoutHistory"><Link  className="droplink" to='/workoutHistory'>Workout History</Link></NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#logout"><Link className="logoutLink" to='/logout'>Logout</Link></NavDropdown.Item>
-          </NavDropdown>
+          <Link className="logoutLink"  to='/logout'>Logout</Link>
+  
+          </div>
+            
+            
+           
+            
+           
           
-            
-            
-           
-            
-           
-          </React.Fragment>
         }
-      </Nav>
-      </Navbar.Collapse>
-      </container>
-    </Navbar>
+     
+      </div>
+   
    );
 }
 

@@ -29,8 +29,10 @@ const Workouts = (props) => {
 
 
     const handleClick = (val) => {
-        props.workoutSetID(val);
-        props.getWorkoutExercises(val);
+        props.workoutSetID(val.id);
+        props.workoutSetName(val.name)
+        props.getWorkoutExercises(val.id);
+        console.log( "name of workout: ", val.name)
         setSeeWorkoutExercises(true);
 
     }
@@ -75,7 +77,7 @@ const Workouts = (props) => {
                                 
                                 
                             <div key={index}>
-                            <button className="exerciseOfWorkout" onClick={event => {handleClick(val.id)}}>
+                            <button className="exerciseOfWorkout" onClick={event => {handleClick(val)}}>
                                 {/* this button on click will route to the exercise display  */}
                                 <h3> {val.name}</h3>
                                 <p>{val.notes}</p>

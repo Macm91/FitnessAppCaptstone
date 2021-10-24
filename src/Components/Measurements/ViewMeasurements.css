@@ -22,6 +22,11 @@
 
 .WF_list h1{
     color:whitesmoke;
-    margin: 15%;
+    margin-top: 15%;
+    margin-bottom: 3%;
+}
+
+.measurementbuton{
+    width: 30em;
 
 }
