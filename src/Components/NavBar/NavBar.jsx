@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { NaNav } from "react-bootstrap";
+// import { NaNav } from "react-bootstrap";
 import "./NavBar.css";
 
 
@@ -37,7 +37,7 @@ const NavBar = ({user}) => {
           <Link className="link" to='/getFastHistory'>Start A Fast</Link>
           <Link className="link" to='/viewMeasurements'>Measurements</Link>
           <Link  className="link" to='/workoutHistory'>Workout History</Link>
-     
+          
 
 
           <Link className="logoutLink"  to='/logout'>Logout</Link>
