@@ -24,7 +24,7 @@ import GetFastHist from "./Components/Fasts/GetFastHistory";
 import FastHistList from "./Components/Fasts/FastHistList";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
-import Calendar from "./Components/Calendar";
+// import Calendar from "./Components/Calendar";
 
 
 

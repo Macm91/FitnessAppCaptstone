@@ -73,7 +73,7 @@ const handleChangeWeight =(event)=>{
 
 if (clicked){
     return(
-        <Redirect to = "/workoutExerciseDisplay" />
+        <Redirect to = "/" />
     );
 }
 else{
@@ -85,7 +85,7 @@ else{
 
 
         <div className="lastStep">
-            <h3> Last step:</h3>
+            <h3> Last step:</h3> 
             <p>Enter the weight, sets and reps for this exercise</p>
             <form className="addtoWE">
             <label><large>Weight</large></label>

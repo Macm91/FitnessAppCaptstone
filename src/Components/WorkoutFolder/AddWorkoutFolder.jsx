@@ -32,7 +32,6 @@ const AddWorkoutFolder = (props) => {
 }
 
    const handleSubmit = (e) => {
-       debugger
        e.preventDefault();
        let wf= {
         user : user,
