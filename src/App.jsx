@@ -64,6 +64,7 @@ class App extends Component{
     };
     this.getExercises();
     this.getUserFolders();    
+    //add get user fast function here
 }
 
 

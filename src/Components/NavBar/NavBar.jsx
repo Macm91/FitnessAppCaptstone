@@ -8,6 +8,13 @@ import "./NavBar.css";
 
 
 const NavBar = ({user}) => {
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    localStorage.clear();
+    window.location.href = '/';
+};
   
   return ( 
 
@@ -40,8 +47,9 @@ const NavBar = ({user}) => {
           
 
 
-          <Link className="logoutLink"  to='/logout'>Logout</Link>
-  
+          {/* <Link className="logoutLink"  to='/logout'>Logout</Link> */}
+          <button className="logout_btn" onClick= {(e)=> handleLogout(e)}>Logout</button>  
+
           </div>
             
             
