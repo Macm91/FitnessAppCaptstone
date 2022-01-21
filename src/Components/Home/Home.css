@@ -19,13 +19,12 @@ img{
     border-color: rgb(182, 180, 180);
     border-style:double;
     padding: 5px;
-    opacity: .7;
     background-color: black;
 
 }
 
 
 img:hover{
-    opacity: 1.0;
+    opacity: .8;
 }
 
