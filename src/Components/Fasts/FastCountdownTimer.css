@@ -5,6 +5,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
+}
+
+h1{
+    color:black;
 }
 
 .buttons{
@@ -12,6 +17,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color:rgb(226, 224, 224);
 }
 
 .start_buttons{
