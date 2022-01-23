@@ -7,15 +7,16 @@
 }
 
 
-.logoutLink{
- 
+.logout_btn{
     text-decoration: none;
     list-style-type: none;
     padding: 2%;;
-    color:red;
+    color:rgb(236, 4, 4);
     text-decoration: none;
     list-style-type: none;
-    
+    margin-left: 80%;
+    background-color: transparent;
+    border: none;
 }
 
 

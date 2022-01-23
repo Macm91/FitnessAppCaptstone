@@ -45,10 +45,8 @@ const NavBar = ({user}) => {
           <Link className="link" to='/viewMeasurements'>Measurements</Link>
           <Link  className="link" to='/workoutHistory'>Workout History</Link>
           
-
-
-          {/* <Link className="logoutLink"  to='/logout'>Logout</Link> */}
-          <button className="logout_btn" onClick= {(e)=> handleLogout(e)}>Logout</button>  
+          <Link className="link"><button className="logout_btn" onClick= {(e)=> handleLogout(e)}><b>Logout</b></button> </Link> 
+           
 
           </div>
             
