@@ -35,21 +35,18 @@ if (measure){
       <button className="Btn" id="wf" onmouseover="bigImg(this)" onClick={()=>setClicked(true)}>
        <img src="./victor-freitas-hOuJYX2K5DA-unsplash.jpeg" alt = "Workouts" />
        <p className="label">Workouts</p>
-              {/* <Link to='/workoutFolder'></Link> */}
             </button>
     </Col>
     <Col xs={6} md={4}>
     <button className="Btn" onClick={()=>setFasting(true)}> 
         <img src="./fasting.jpg" alt = "Fasting" />
         <p className="label">Start A Fast</p>
-              {/* <Link to='/fastTimer'>Fasting Timer</Link> */}
             </button>
     </Col>
     <Col xs={6} md={4}>
       <button className="Btn" onClick={()=>setMeasure(true)}>
       <img src="./jennifer-burk-ECXB0YAZ_zU-unsplash.jpeg" alt = "workout folder" thumbnail/>
         <p className="label">Measurments</p>
-    {/* <Link to='/viewMeasurements'>Measurements</Link> */}
     </button>
       
     </Col>
