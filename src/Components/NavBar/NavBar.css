@@ -31,7 +31,7 @@
     background-color:rgba(5, 5, 5, 0.219);
     margin: 0px;
     padding: 0;
-    width: 100%;
+    width: 100vw;
     display: flex;
     min-width: 30em;
     font-size: large;

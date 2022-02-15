@@ -18,14 +18,7 @@ const NavBar = ({user}) => {
   
   return ( 
 
-    <div className="nav">
-      {/* {user && <p/>} */}
-      
-      
-     
-        
-
-
+    <div className="nav" style={{width: '100vw'}}>
         {!user &&
           <div className="nav">
           <Link className="link" to='/'> Home </Link> 
