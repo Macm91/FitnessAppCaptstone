@@ -18,7 +18,7 @@ const NavBar = ({user}) => {
   
   return ( 
 
-    <div className="nav" style={{width: '100vw'}}>
+    <div className="nav" style={{position: 'absolute', left: '0px', width: '100%', backgroundColor: "rgba(5, 5, 5, 0.219)", display: "grid"}}> 
         {!user &&
           <div className="nav">
           <Link className="link" to='/'> Home </Link> 
@@ -38,7 +38,7 @@ const NavBar = ({user}) => {
           <Link className="link" to='/viewMeasurements'>Measurements</Link>
           <Link  className="link" to='/workoutHistory'>Workout History</Link>
           
-          <Link className="link"><button className="logout_btn" onClick= {(e)=> handleLogout(e)}><b>Logout</b></button> </Link> 
+          <Link className="link" ><button className="logout_btn"  onClick= {(e)=> handleLogout(e)}><b>Logout</b></button> </Link> 
            
 
           </div>

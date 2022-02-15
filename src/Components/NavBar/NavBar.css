@@ -4,8 +4,8 @@
     text-decoration: none;
     list-style-type: none;
     padding: 2%;;
+    font-size: large;
 }
-
 
 .logout_btn{
     text-decoration: none;
@@ -17,27 +17,10 @@
     margin-left: 80%;
     background-color: transparent;
     border: none;
-}
-
-
-
-.registerLink{
-    color:rgb(2, 0, 0);
-    text-decoration: none;
-        
-}
-
-.nav{
-    background-color:rgba(5, 5, 5, 0.219);
-    margin: 0px;
-    padding: 0;
-    width: 100vw;
-    display: flex;
-    min-width: 30em;
-    font-size: large;
 
 }
-    
+
+
 
 .body{
     margin: 0px;
